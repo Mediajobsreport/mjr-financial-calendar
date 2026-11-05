@@ -1,77 +1,356 @@
 {
-  "updated_utc": "2026-11-05T14:24:03+00:00",
+  "updated_utc": "2026-11-05T14:47:45+00:00",
   "companies": [
     {
-      "name": "iHeartMedia",
-      "ticker": "IHRT",
-      "sector": "Radio",
-      "investor_url": "https://investors.iheartmedia.com/"
+      "name": "AMC Networks",
+      "ticker": "AMCX",
+      "sector": "TV & Streaming",
+      "description": "Global entertainment company producing and distributing television programming and streaming services.",
+      "website_url": "https://www.amcnetworks.com/",
+      "investor_url": "https://investor.amcnetworks.com/",
+      "quote_url": "https://www.tradingview.com/symbols/NASDAQ-AMCX/"
     },
     {
-      "name": "Cumulus Media",
-      "ticker": "CMLS",
-      "sector": "Radio",
-      "investor_url": "https://investors.cumulusmedia.com/"
-    },
-    {
-      "name": "Nexstar Media Group",
-      "ticker": "NXST",
-      "sector": "Television",
-      "investor_url": "https://www.nexstar.tv/investor-relations/"
-    },
-    {
-      "name": "Gray Media",
-      "ticker": "GTN",
-      "sector": "Television",
-      "investor_url": "https://graymedia.com/investors/"
-    },
-    {
-      "name": "Sinclair",
-      "ticker": "SBGI",
-      "sector": "Television",
-      "investor_url": "https://sbgi.net/investors/"
-    },
-    {
-      "name": "The Walt Disney Company",
-      "ticker": "DIS",
-      "sector": "Entertainment",
-      "investor_url": "https://thewaltdisneycompany.com/investor-relations/"
+      "name": "Beasley Media Group",
+      "ticker": "BBGI",
+      "sector": "Broadcast & Local",
+      "description": "Owns and operates radio stations and digital audio properties across U.S. markets.",
+      "website_url": "https://bbgi.com/",
+      "investor_url": "https://investor.bbgi.com/",
+      "quote_url": "https://www.tradingview.com/symbols/NASDAQ-BBGI/"
     },
     {
       "name": "Comcast",
       "ticker": "CMCSA",
-      "sector": "Entertainment",
-      "investor_url": "https://www.cmcsa.com/"
+      "sector": "TV & Streaming",
+      "description": "Global media and technology company spanning broadband, film, television, and streaming.",
+      "website_url": "https://corporate.comcast.com/",
+      "investor_url": "https://www.cmcsa.com/",
+      "quote_url": "https://www.tradingview.com/symbols/NASDAQ-CMCSA/"
     },
     {
-      "name": "Netflix",
-      "ticker": "NFLX",
-      "sector": "Streaming",
-      "investor_url": "https://ir.netflix.net/"
+      "name": "CuriosityStream",
+      "ticker": "CURI",
+      "sector": "TV & Streaming",
+      "description": "Subscription streaming and media company focused on factual entertainment and nonfiction programming.",
+      "website_url": "https://curiositystream.com/",
+      "investor_url": "https://ir.curiositystream.com/",
+      "quote_url": "https://www.tradingview.com/symbols/NASDAQ-CURI/"
     },
     {
-      "name": "Spotify",
-      "ticker": "SPOT",
-      "sector": "Audio",
-      "investor_url": "https://investors.spotify.com/"
+      "name": "Daily Journal",
+      "ticker": "DJCO",
+      "sector": "News & Publishing",
+      "description": "Publishes newspapers and operates digital news properties, alongside technology and investment activities.",
+      "website_url": "https://www.dailyjournal.com/",
+      "investor_url": "https://www.dailyjournal.com/",
+      "quote_url": "https://www.tradingview.com/symbols/NASDAQ-DJCO/"
     },
     {
-      "name": "Gannett",
-      "ticker": "GCI",
-      "sector": "Publishing",
-      "investor_url": "https://investors.gannett.com/"
+      "name": "The Walt Disney Company",
+      "ticker": "DIS",
+      "sector": "TV & Streaming",
+      "description": "Global entertainment company with film, television, streaming, theme parks, and consumer products businesses.",
+      "website_url": "https://thewaltdisneycompany.com/",
+      "investor_url": "https://thewaltdisneycompany.com/investor-relations/",
+      "quote_url": "https://www.tradingview.com/symbols/NYSE-DIS/"
     },
     {
-      "name": "The New York Times Company",
-      "ticker": "NYT",
-      "sector": "Publishing",
-      "investor_url": "https://investors.nytco.com/"
+      "name": "E.W. Scripps",
+      "ticker": "SSP",
+      "sector": "Broadcast & Local",
+      "description": "U.S. local television broadcaster and owner of national news and entertainment networks.",
+      "website_url": "https://scripps.com/",
+      "investor_url": "https://investors.scripps.com/",
+      "quote_url": "https://www.tradingview.com/symbols/NASDAQ-SSP/"
+    },
+    {
+      "name": "Entravision",
+      "ticker": "EVC",
+      "sector": "Broadcast & Local",
+      "description": "Media, advertising technology, and marketing services company with a focus on Hispanic audiences.",
+      "website_url": "https://entravision.com/",
+      "investor_url": "https://investor.entravision.com/",
+      "quote_url": "https://www.tradingview.com/symbols/NYSE-EVC/"
     },
     {
       "name": "Fox Corporation",
       "ticker": "FOXA",
-      "sector": "Television",
-      "investor_url": "https://investor.foxcorporation.com/"
+      "sector": "TV & Streaming",
+      "description": "News, sports, and entertainment company operating broadcast, cable, and digital brands.",
+      "website_url": "https://www.foxcorporation.com/",
+      "investor_url": "https://investor.foxcorporation.com/",
+      "quote_url": "https://www.tradingview.com/symbols/NASDAQ-FOXA/"
+    },
+    {
+      "name": "Fubo",
+      "ticker": "FUBO",
+      "sector": "TV & Streaming",
+      "description": "Sports-focused live television streaming service and digital entertainment platform.",
+      "website_url": "https://www.fubo.tv/",
+      "investor_url": "https://investor.fubo.tv/",
+      "quote_url": "https://www.tradingview.com/symbols/NYSE-FUBO/"
+    },
+    {
+      "name": "Graham Holdings",
+      "ticker": "GHC",
+      "sector": "News & Publishing",
+      "description": "Diversified holding company with education, media, manufacturing, and other operating businesses.",
+      "website_url": "https://www.ghco.com/",
+      "investor_url": "https://www.ghco.com/",
+      "quote_url": "https://www.tradingview.com/symbols/NYSE-GHC/"
+    },
+    {
+      "name": "Gray Media",
+      "ticker": "GTN",
+      "sector": "Broadcast & Local",
+      "description": "Local television broadcaster with stations, digital services, and production operations.",
+      "website_url": "https://graymedia.com/",
+      "investor_url": "https://graymedia.com/investors/",
+      "quote_url": "https://www.tradingview.com/symbols/NYSE-GTN/"
+    },
+    {
+      "name": "iHeartMedia",
+      "ticker": "IHRT",
+      "sector": "Broadcast & Local",
+      "description": "Audio media company spanning broadcast radio, podcasts, digital audio, and live events.",
+      "website_url": "https://www.iheartmedia.com/",
+      "investor_url": "https://investors.iheartmedia.com/",
+      "quote_url": "https://www.tradingview.com/symbols/NASDAQ-IHRT/"
+    },
+    {
+      "name": "Lee Enterprises",
+      "ticker": "LEE",
+      "sector": "News & Publishing",
+      "description": "Local news publisher operating newspapers and digital news products across the United States.",
+      "website_url": "https://www.lee.net/",
+      "investor_url": "https://investors.lee.net/",
+      "quote_url": "https://www.tradingview.com/symbols/NASDAQ-LEE/"
+    },
+    {
+      "name": "Lionsgate Studios",
+      "ticker": "LION",
+      "sector": "TV & Streaming",
+      "description": "Film and television studio producing, acquiring, and distributing entertainment content.",
+      "website_url": "https://www.lionsgate.com/",
+      "investor_url": "https://www.lionsgate.com/investors",
+      "quote_url": "https://www.tradingview.com/symbols/NYSE-LION/"
+    },
+    {
+      "name": "MediaCo",
+      "ticker": "MDIA",
+      "sector": "Broadcast & Local",
+      "description": "Multicultural media company with radio, digital, and outdoor advertising properties.",
+      "website_url": "https://www.mediaco.holdings/",
+      "investor_url": "https://www.mediaco.holdings/investors/",
+      "quote_url": "https://www.tradingview.com/symbols/NASDAQ-MDIA/"
+    },
+    {
+      "name": "Netflix",
+      "ticker": "NFLX",
+      "sector": "TV & Streaming",
+      "description": "Subscription entertainment service offering series, films, games, and live programming.",
+      "website_url": "https://www.netflix.com/",
+      "investor_url": "https://ir.netflix.net/",
+      "quote_url": "https://www.tradingview.com/symbols/NASDAQ-NFLX/"
+    },
+    {
+      "name": "The New York Times Company",
+      "ticker": "NYT",
+      "sector": "News & Publishing",
+      "description": "Global news and digital subscription company publishing The New York Times and other products.",
+      "website_url": "https://www.nytco.com/",
+      "investor_url": "https://investors.nytco.com/",
+      "quote_url": "https://www.tradingview.com/symbols/NYSE-NYT/"
+    },
+    {
+      "name": "News Corp",
+      "ticker": "NWSA",
+      "sector": "News & Publishing",
+      "description": "Global media company with news, information services, book publishing, and digital real estate operations.",
+      "website_url": "https://newscorp.com/",
+      "investor_url": "https://newscorp.com/investors/",
+      "quote_url": "https://www.tradingview.com/symbols/NASDAQ-NWSA/"
+    },
+    {
+      "name": "Newsmax",
+      "ticker": "NMAX",
+      "sector": "News & Publishing",
+      "description": "News and information company operating television, digital, print, and related media properties.",
+      "website_url": "https://www.newsmax.com/",
+      "investor_url": "https://ir.newsmax.com/",
+      "quote_url": "https://www.tradingview.com/symbols/NYSE-NMAX/"
+    },
+    {
+      "name": "Nexstar Media Group",
+      "ticker": "NXST",
+      "sector": "Broadcast & Local",
+      "description": "Local television and digital media company, also owning national networks and The CW.",
+      "website_url": "https://www.nexstar.tv/",
+      "investor_url": "https://www.nexstar.tv/investor-relations/",
+      "quote_url": "https://www.tradingview.com/symbols/NASDAQ-NXST/"
+    },
+    {
+      "name": "Paramount Skydance",
+      "ticker": "PSKY",
+      "sector": "TV & Streaming",
+      "description": "Global entertainment company combining film and television studios, broadcast networks, and streaming services.",
+      "website_url": "https://www.paramount.com/",
+      "investor_url": "https://ir.paramount.com/",
+      "quote_url": "https://www.tradingview.com/symbols/NASDAQ-PSKY/"
+    },
+    {
+      "name": "People Inc.",
+      "ticker": "PPLI",
+      "sector": "News & Publishing",
+      "description": "Digital publishing company operating lifestyle, news, and service brands including People and Better Homes & Gardens.",
+      "website_url": "https://people.inc/",
+      "investor_url": "https://investors.people.inc/",
+      "quote_url": "https://www.tradingview.com/symbols/NASDAQ-PPLI/"
+    },
+    {
+      "name": "Reservoir Media",
+      "ticker": "RSVR",
+      "sector": "Music & Audio",
+      "description": "Independent music company with recorded music, music publishing, and rights-management businesses.",
+      "website_url": "https://www.reservoir-media.com/",
+      "investor_url": "https://investors.reservoir-media.com/",
+      "quote_url": "https://www.tradingview.com/symbols/NASDAQ-RSVR/"
+    },
+    {
+      "name": "Roku",
+      "ticker": "ROKU",
+      "sector": "TV & Streaming",
+      "description": "Connected-TV platform and streaming company with devices, operating systems, advertising, and content.",
+      "website_url": "https://www.roku.com/",
+      "investor_url": "https://ir.roku.com/",
+      "quote_url": "https://www.tradingview.com/symbols/NASDAQ-ROKU/"
+    },
+    {
+      "name": "Rumble",
+      "ticker": "RUM",
+      "sector": "TV & Streaming",
+      "description": "Video-sharing and cloud-services company serving creators, audiences, and publishers.",
+      "website_url": "https://rumble.com/",
+      "investor_url": "https://investors.rumble.com/",
+      "quote_url": "https://www.tradingview.com/symbols/NASDAQ-RUM/"
+    },
+    {
+      "name": "Saga Communications",
+      "ticker": "SGA",
+      "sector": "Broadcast & Local",
+      "description": "U.S. radio broadcaster with stations and digital advertising services in local markets.",
+      "website_url": "https://sagacom.com/",
+      "investor_url": "https://sagacom.com/investors/",
+      "quote_url": "https://www.tradingview.com/symbols/NASDAQ-SGA/"
+    },
+    {
+      "name": "Sinclair",
+      "ticker": "SBGI",
+      "sector": "Broadcast & Local",
+      "description": "Television broadcaster and media company with local stations, networks, and digital operations.",
+      "website_url": "https://sbgi.net/",
+      "investor_url": "https://sbgi.net/investors/",
+      "quote_url": "https://www.tradingview.com/symbols/NASDAQ-SBGI/"
+    },
+    {
+      "name": "SiriusXM",
+      "ticker": "SIRI",
+      "sector": "Music & Audio",
+      "description": "Audio entertainment company providing satellite radio, streaming audio, and podcast services.",
+      "website_url": "https://www.siriusxm.com/",
+      "investor_url": "https://investor.siriusxm.com/",
+      "quote_url": "https://www.tradingview.com/symbols/NASDAQ-SIRI/"
+    },
+    {
+      "name": "Sony Group",
+      "ticker": "SONY",
+      "sector": "Music & Audio",
+      "description": "Global entertainment and technology company with music, film, television, gaming, and electronics businesses.",
+      "website_url": "https://www.sony.com/",
+      "investor_url": "https://www.sony.com/en/SonyInfo/IR/",
+      "quote_url": "https://www.tradingview.com/symbols/NYSE-SONY/"
+    },
+    {
+      "name": "Spotify",
+      "ticker": "SPOT",
+      "sector": "Music & Audio",
+      "description": "Audio streaming service offering music, podcasts, audiobooks, and creator tools.",
+      "website_url": "https://www.spotify.com/",
+      "investor_url": "https://investors.spotify.com/",
+      "quote_url": "https://www.tradingview.com/symbols/NYSE-SPOT/"
+    },
+    {
+      "name": "Starz",
+      "ticker": "STRZ",
+      "sector": "TV & Streaming",
+      "description": "Premium entertainment company offering scripted series, films, and a subscription streaming service.",
+      "website_url": "https://www.starz.com/",
+      "investor_url": "https://investors.starz.com/",
+      "quote_url": "https://www.tradingview.com/symbols/NASDAQ-STRZ/"
+    },
+    {
+      "name": "Tencent Music Entertainment",
+      "ticker": "TME",
+      "sector": "Music & Audio",
+      "description": "China-based online music and audio entertainment platform operating streaming and social music services.",
+      "website_url": "https://www.tencentmusic.com/",
+      "investor_url": "https://ir.tencentmusic.com/",
+      "quote_url": "https://www.tradingview.com/symbols/NYSE-TME/"
+    },
+    {
+      "name": "Townsquare Media",
+      "ticker": "TSQ",
+      "sector": "Broadcast & Local",
+      "description": "Local media company with radio stations, digital marketing services, and live events.",
+      "website_url": "https://www.townsquaremedia.com/",
+      "investor_url": "https://investors.townsquaremedia.com/",
+      "quote_url": "https://www.tradingview.com/symbols/NYSE-TSQ/"
+    },
+    {
+      "name": "Urban One",
+      "ticker": "UONE",
+      "sector": "Broadcast & Local",
+      "description": "Multimedia company focused on Black audiences, with radio, television, digital, and entertainment businesses.",
+      "website_url": "https://urban1.com/",
+      "investor_url": "https://urban1.com/investors/",
+      "quote_url": "https://www.tradingview.com/symbols/NASDAQ-UONE/"
+    },
+    {
+      "name": "USA TODAY Co.",
+      "ticker": "TDAY",
+      "sector": "News & Publishing",
+      "description": "News and media company with USA TODAY and a network of local news brands and digital products.",
+      "website_url": "https://www.usatodayco.com/",
+      "investor_url": "https://investors.usatodayco.com/",
+      "quote_url": "https://www.tradingview.com/symbols/NYSE-TDAY/"
+    },
+    {
+      "name": "Warner Bros. Discovery",
+      "ticker": "WBD",
+      "sector": "TV & Streaming",
+      "description": "Global entertainment company with film and television studios, cable networks, and streaming services.",
+      "website_url": "https://www.wbd.com/",
+      "investor_url": "https://ir.wbd.com/",
+      "quote_url": "https://www.tradingview.com/symbols/NASDAQ-WBD/"
+    },
+    {
+      "name": "Warner Music Group",
+      "ticker": "WMG",
+      "sector": "Music & Audio",
+      "description": "Global music company operating recorded music labels and music publishing businesses.",
+      "website_url": "https://www.wmg.com/",
+      "investor_url": "https://investors.wmg.com/",
+      "quote_url": "https://www.tradingview.com/symbols/NASDAQ-WMG/"
+    },
+    {
+      "name": "Paradium.AI",
+      "ticker": "PAAI",
+      "sector": "News & Publishing",
+      "description": "Publicly traded company included in MJR's news and publishing stock category.",
+      "website_url": "https://paradium.ai/",
+      "investor_url": "https://paradium.ai/",
+      "quote_url": "https://www.tradingview.com/symbols/AMEX-PAAI/"
     }
   ],
   "events": [
