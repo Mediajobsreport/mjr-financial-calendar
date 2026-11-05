@@ -7,10 +7,11 @@ A small, responsive calendar for confirmed earnings releases, investor calls and
 - `data/companies.json` holds company names, sectors, tickers and investor-relations links.
 - `data/events.json` holds confirmed events and their company-source links.
 - `scripts/build.py` validates event records and produces `calendar.json` for the page.
-- GitHub Actions rebuilds the data on a six-hour schedule, deploys the static calendar to GitHub Pages, and publishes eligible verified earnings notices as MJR News Articles using the repository secret `BD_API_KEY`.
+- GitHub Actions rebuilds the data on a six-hour schedule, deploys the static calendar to GitHub Pages, and publishes eligible notices as MJR News Articles using the repository secret `BD_API_KEY`.
 - The page provides search and stock-category filters; its collapsed, searchable company directory covers all 39 tickers from MJR stock reports with company, investor-relations and quote links. Event cards link to announcements, webcasts and financial reports.
 - `scripts/generate_company_graphics.py` creates a 1200×640 editorial SVG graphic for every tracked company in `generated-assets/company-graphics/`. Graphics use the company name, ticker, sector motif and an editorial accent color.
-- `scripts/publish.py` posts confirmed events within 14 days, selects the matching company graphic using the ticker, deduplicates by official source URL in `data/published-events.json`, and limits publishing to two notices per day.
+- `scripts/publish.py` posts confirmed upcoming events within 14 days, selects the matching company graphic using the ticker, deduplicates by official source URL in `data/published-events.json`, and limits publishing to two notices per day.
+- `scripts/publish_results.py` checks SEC EDGAR submissions for recent 8-K earnings announcements (Item 2.02) and results-related 6-K filings. It publishes a separate report-day notice with the issuer's release headline and direct links to the release and filing, deduplicated by accession number in `data/published-results.json`. This keeps the advance event notice separate from the actual results announcement.
 
 ## Add or update an event
 
@@ -28,4 +29,4 @@ To embed it in Brilliant Directories, add an iframe to the body of an MJR custom
 <iframe src="https://mediajobsreport.github.io/mjr-financial-calendar/" title="MJR Media Financial Calendar" loading="lazy" style="width:100%;height:1100px;border:0" referrerpolicy="strict-origin-when-cross-origin"></iframe>
 ```
 
-The calendar and generated notices are editorial reference material, not investment advice. Event records are entered in `data/events.json` only after verification against official company sources. The workflow publishes concise schedule announcements; it does not discover new events or report financial results automatically. Editors must add and verify new events before they can be published.
+The calendar and generated notices are editorial reference material, not investment advice. Event records are entered in `data/events.json` only after verification against official company sources. Upcoming event notices remain editor-verified. Results monitoring discovers qualifying releases through SEC EDGAR and links directly to the filed exhibit and filing; issuers whose results are not available in the monitored SEC filings may not be detected automatically.
