@@ -7,7 +7,7 @@ on:
       - '.github/workflows/build.yml'
   schedule:
     - cron: '17 */6 * * *'
-  workflow_dispatch
+  workflow_dispatch:
 permissions:
   contents: write
 jobs:
@@ -28,7 +28,7 @@ jobs:
         run: python scripts/publish_results.py
         env:
           BD_API_KEY: ${{ secrets.BD_API_KEY }}
-          SEC_USER_AGENT: Media Jobs Report financial coverage jerry@mediajobsreport.com
+          SEC_USER_AGENT: 'Media Jobs Report financial coverage jerry@mediajobsreport.com'
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: 'Refresh calendar and publish verified earnings notices'
