@@ -18,6 +18,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - run: python scripts/generate_company_graphics.py
       - run: python scripts/build.py
       - name: Publish verified upcoming earnings notices
         run: python scripts/publish.py
