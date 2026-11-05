@@ -2,14 +2,18 @@
 """Generate editorial 1200x640 SVG graphics for the MJR financial company directory."""
 from __future__ import annotations
 
+import base64
 import html
 import json
+import mimetypes
 import re
 from pathlib import Path
+from urllib.request import Request, urlopen
 
 ROOT = Path(__file__).resolve().parents[1]
 COMPANIES_PATH = ROOT / "data" / "companies.json"
 OUTPUT_DIR = ROOT / "generated-assets" / "company-graphics"
+LOGO_CACHE_DIR = ROOT / "generated-assets" / "company-logos"
 WIDTH, HEIGHT = 1200, 640
 
 ACCENTS = {
@@ -75,6 +79,57 @@ SECTOR_LABELS = {
     "Music & Audio": "MUSIC & AUDIO",
 }
 
+def logo_data_uri(ticker: str) -> str | None:
+    """Fetch and cache a company logo, returning an embedded data URI."""
+    url = LOGO_URLS.get(ticker)
+    if not url:
+        return None
+
+    import hashlib
+    source_key = hashlib.sha256(url.encode("utf-8")).hexdigest()[:12]
+    LOGO_CACHE_DIR.mkdir(parents=True, exist_ok=True)
+    cached = next(LOGO_CACHE_DIR.glob(f"{ticker}-{source_key}.*"), None)
+    if cached:
+        suffix = cached.suffix.lower()
+        media_type = mimetypes.types_map.get(suffix, "application/octet-stream")
+        if suffix == ".svg":
+            media_type = "image/svg+xml"
+        return f"data:{media_type};base64,{base64.b64encode(cached.read_bytes()).decode('ascii')}"
+
+    request = Request(url, headers={"User-Agent": "MJR Financial Calendar/1.0 (mediajobsreport.com)"})
+    with urlopen(request, timeout=35) as response:
+        payload = response.read()
+        media_type = response.headers.get_content_type().lower()
+
+    if not payload:
+        raise RuntimeError(f"Empty logo response for {ticker}: {url}")
+    if media_type == "text/html" or media_type.startswith("text/"):
+        head = payload[:4096].lstrip().lower()
+        if b"<svg" in head:
+            media_type = "image/svg+xml"
+        else:
+            raise RuntimeError(f"Logo source returned {media_type} for {ticker}: {url}")
+
+    ext = {
+        "image/jpeg": ".jpg",
+        "image/png": ".png",
+        "image/webp": ".webp",
+        "image/gif": ".gif",
+        "image/svg+xml": ".svg",
+        "image/avif": ".avif",
+    }.get(media_type)
+    if not ext:
+        raise RuntimeError(f"Unsupported logo format {media_type} for {ticker}: {url}")
+
+    # Reject unexpected HTML error pages mislabeled as images.
+    sample = payload[:256].lstrip().lower()
+    if ext != ".svg" and (sample.startswith(b"<!doctype html") or sample.startswith(b"<html")):
+        raise RuntimeError(f"Logo source returned an HTML page for {ticker}: {url}")
+
+    cached = LOGO_CACHE_DIR / f"{ticker}-{source_key}{ext}"
+    cached.write_bytes(payload)
+    return f"data:{media_type};base64,{base64.b64encode(payload).decode('ascii')}"
+
 def esc(value: object) -> str:
     return html.escape(str(value), quote=True)
 
@@ -133,7 +188,7 @@ def render(company: dict) -> Path:
 <path d="M770 0h430v640h-170z" fill="#fff" opacity=".025"/>
 <path d="M1040 0h160v640h-25z" fill="{accent}" opacity=".075"/>
 <rect x="790" y="144" width="350" height="230" rx="24" fill="#ffffff"/>
-{(f'<image href="{esc(LOGO_URLS[ticker])}" x="812" y="157" width="306" height="204" preserveAspectRatio="xMidYMid meet"/>' if ticker in LOGO_URLS else f'<text x="965" y="266" text-anchor="middle" font-family="Georgia,serif" font-size="48px" fill="#111">Paradium.AI</text>')}
+{(f'<image href="{logo_data_uri(ticker)}" x="812" y="157" width="306" height="204" preserveAspectRatio="xMidYMid meet"/>' if ticker in LOGO_URLS else f'<text x="965" y="266" text-anchor="middle" font-family="Georgia,serif" font-size="48px" fill="#111">Paradium.AI</text>')}
 <text x="1160" y="530" text-anchor="end" class="label" font-size="150px" fill="#fff" opacity=".07">{esc(ticker)}</text>
 <rect x="66" y="54" width="310" height="44" rx="22" fill="{accent}"/>
 <text x="84" y="82" class="label" font-size="15px" letter-spacing=".5" fill="#0a1424">MJR FINANCIAL COVERAGE</text>
