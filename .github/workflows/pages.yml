@@ -36,7 +36,7 @@ jobs:
                 {
                   owner: context.repo.owner,
                   repo: context.repo.repo,
-                  pages_deployment_id: "08e4b5e96ed8f4be3b9554f7e147bd4499393cef"
+                  pages_deployment_id: "e8601aee875e3a1ac3803a72d71123b4e7589272"
                 }
               );
               core.info(`Cancelled stale Pages deployment (HTTP ${response.status}).`);
