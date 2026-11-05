@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="A verified calendar of earnings announcements, investor calls and financial reports from media companies.">
+  <title>Media Financial Calendar | Media Jobs Report</title>
+  <style>
+    :root{font-family:Arial,Helvetica,sans-serif;color:#172b4d;background:#f4f7fb;font-synthesis:none}
+    *{box-sizing:border-box}body{margin:0}.shell{max-width:1120px;margin:auto;padding:28px 20px 48px}
+    header{padding:26px 28px;border-radius:16px;background:linear-gradient(125deg,#102d50,#1769a6);color:#fff}
+    .eyebrow{margin:0 0 9px;font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;color:#bcdcff;font-weight:700}
+    h1{font-size:clamp(1.7rem,4vw,2.5rem);line-height:1.12;margin:0 0 10px}header p:last-child{max-width:760px;margin:0;color:#e6f1ff;line-height:1.55}
+    .filters{display:flex;gap:12px;flex-wrap:wrap;margin:20px 0 24px}.filters label{font-size:.8rem;font-weight:700;color:#52657e;display:grid;gap:6px}
+    input,select{min-width:210px;padding:11px 12px;border:1px solid #c7d3e1;border-radius:8px;background:#fff;font:inherit;color:#172b4d}
+    h2{font-size:1.25rem;margin:28px 0 12px}.count{font-weight:400;font-size:.9rem;color:#64748b}
+    .list{display:grid;gap:12px}.event,.company{background:#fff;border:1px solid #dbe4ee;border-radius:12px;padding:17px 18px;box-shadow:0 2px 8px #1234530a}
+    .event{display:grid;grid-template-columns:126px 1fr;gap:16px}.date{font-weight:800;color:#135a91;line-height:1.3}.date small{display:block;margin-top:5px;color:#66758b;font-size:.78rem;font-weight:500}
+    .company-name{font-size:1rem;font-weight:800}.event-title{font-weight:700;margin:6px 0 8px}.meta{font-size:.82rem;color:#66758b;margin:0 0 11px}
+    a{color:#155e9c;font-weight:700;text-decoration:none}a:hover{text-decoration:underline}.links{display:flex;gap:15px;flex-wrap:wrap;font-size:.88rem}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(225px,1fr));gap:12px}.company p{margin:6px 0 12px;color:#66758b;font-size:.84rem}
+    .empty,.note{padding:16px;background:#fff;border:1px solid #dbe4ee;border-radius:10px;color:#52657e;line-height:1.5}.note{margin-top:20px;font-size:.82rem}
+    footer{margin-top:26px;color:#718096;font-size:.78rem}
+    @media(max-width:580px){.shell{padding:16px 12px 32px}header{padding:22px 18px}.event{grid-template-columns:1fr;gap:8px}.date{font-size:.9rem}input,select{width:100%}}
+  </style>
+</head>
+<body>
+<main class="shell">
+  <header>
+    <p class="eyebrow">Media Jobs Report · Financial Coverage</p>
+    <h1>Media Financial Calendar</h1>
+    <p>Upcoming earnings releases, investor calls and financial reports from media companies. Calendar dates appear only after verification against a company announcement.</p>
+  </header>
+  <section class="filters" aria-label="Calendar filters">
+    <label>Search companies and events<input id="q" type="search" placeholder="Try Gray Media or earnings call"></label>
+    <label>Sector<select id="sector"><option value="">All sectors</option></select></label>
+  </section>
+  <section aria-labelledby="events-heading">
+    <h2 id="events-heading">Confirmed events <span id="event-count" class="count"></span></h2>
+    <div id="events" class="list" aria-live="polite"><p class="empty">Loading calendar…</p></div>
+  </section>
+  <section aria-labelledby="companies-heading">
+    <h2 id="companies-heading">Company investor relations</h2>
+    <div id="companies" class="grid"></div>
+  </section>
+  <p class="note">Dates and times are shown as announced by each company. Links open company or regulatory source material. This calendar is for editorial reference and is not investment advice.</p>
+  <footer id="updated"></footer>
+</main>
+<script>
+let data={companies:[],events:[]};
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const url=s=>{try{const u=new URL(s);return u.protocol==='https:'?u.href:''}catch{return ''}};
+const companyFor=e=>data.companies.find(c=>c.name===e.company)||{};
+function matches(item,q,sector){const c=companyFor(item);return(!sector||c.sector===sector)&&(!q||`${JSON.stringify(item)} ${c.sector||''} ${c.ticker||''}`.toLowerCase().includes(q))}
+function render(){const q=document.querySelector('#q').value.trim().toLowerCase(),sector=document.querySelector('#sector').value;const events=data.events.filter(e=>matches(e,q,sector));document.querySelector('#event-count').textContent=`(${events.length})`;
+  document.querySelector('#events').innerHTML=events.length?events.map(e=>{const c=companyFor(e),src=url(e.source_url),web=url(e.webcast_url),report=url(e.report_url);const when=[e.time,e.timezone].filter(Boolean).join(' ');return `<article class="event"><div class="date">${esc(new Date(`${e.date}T12:00:00`).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}))}<small>${esc(when||'Time not announced')}</small></div><div><div class="company-name">${esc(e.company)}</div><p class="event-title">${esc(e.title)}</p><p class="meta">${esc(c.sector||'Media')} · ${esc(e.event_type||'Financial event')}${e.fiscal_period?` · ${esc(e.fiscal_period)}`:''}</p><div class="links">${src?`<a href="${esc(src)}" target="_blank" rel="noopener">Company announcement</a>`:''}${web?`<a href="${esc(web)}" target="_blank" rel="noopener">Webcast / event</a>`:''}${report?`<a href="${esc(report)}" target="_blank" rel="noopener">Financial report</a>`:''}</div></div></article>`}).join(''):'<p class="empty">No confirmed events match these filters.</p>';
+  document.querySelector('#companies').innerHTML=data.companies.filter(c=>(!sector||c.sector===sector)&&(!q||JSON.stringify(c).toLowerCase().includes(q))).map(c=>{const href=url(c.investor_url);return `<article class="company"><strong>${esc(c.name)}</strong><p>${esc(c.sector)} · ${esc(c.ticker)}</p>${href?`<a href="${esc(href)}" target="_blank" rel="noopener">Investor relations</a>`:''}</article>`}).join('')}
+fetch('./calendar.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('Calendar unavailable');return r.json()}).then(x=>{data=x;const sectors=[...new Set(data.companies.map(c=>c.sector).filter(Boolean))].sort();document.querySelector('#sector').insertAdjacentHTML('beforeend',sectors.map(s=>`<option value="${esc(s)}">${esc(s)}</option>`).join(''));render();document.querySelector('#updated').textContent=`Calendar data last updated ${new Date(data.updated_utc).toLocaleString('en-US',{dateStyle:'medium',timeStyle:'short',timeZone:'America/New_York'})} ET.`}).catch(()=>document.querySelector('#events').innerHTML='<p class="empty">Calendar data is temporarily unavailable.</p>');
+document.querySelector('#q').addEventListener('input',render);document.querySelector('#sector').addEventListener('change',render);
+</script>
+</body>
+</html>
