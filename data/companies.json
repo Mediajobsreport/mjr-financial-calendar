@@ -1,0 +1,14 @@
+[
+ {"name":"iHeartMedia","ticker":"IHRT","sector":"Radio","investor_url":"https://investors.iheartmedia.com/"},
+ {"name":"Cumulus Media","ticker":"CMLS","sector":"Radio","investor_url":"https://investors.cumulusmedia.com/"},
+ {"name":"Nexstar Media Group","ticker":"NXST","sector":"Television","investor_url":"https://www.nexstar.tv/investor-relations/"},
+ {"name":"Gray Media","ticker":"GTN","sector":"Television","investor_url":"https://graymedia.com/investors/"},
+ {"name":"Sinclair","ticker":"SBGI","sector":"Television","investor_url":"https://sbgi.net/investors/"},
+ {"name":"The Walt Disney Company","ticker":"DIS","sector":"Entertainment","investor_url":"https://thewaltdisneycompany.com/investor-relations/"},
+ {"name":"Comcast","ticker":"CMCSA","sector":"Entertainment","investor_url":"https://www.cmcsa.com/"},
+ {"name":"Netflix","ticker":"NFLX","sector":"Streaming","investor_url":"https://ir.netflix.net/"},
+ {"name":"Spotify","ticker":"SPOT","sector":"Audio","investor_url":"https://investors.spotify.com/"},
+ {"name":"Gannett","ticker":"GCI","sector":"Publishing","investor_url":"https://investors.gannett.com/"},
+ {"name":"The New York Times Company","ticker":"NYT","sector":"Publishing","investor_url":"https://investors.nytco.com/"},
+ {"name":"Fox Corporation","ticker":"FOXA","sector":"Television","investor_url":"https://investor.foxcorporation.com/"}
+]
