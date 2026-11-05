@@ -5,7 +5,7 @@
     "sector": "TV & Streaming",
     "description": "Global entertainment company producing and distributing television programming and streaming services.",
     "website_url": "https://www.amcnetworks.com/",
-    "investor_url": "https://investor.amcnetworks.com/",
+    "investor_url": "https://investors.amcnetworks.com/",
     "quote_url": "https://www.tradingview.com/symbols/NASDAQ-AMCX/"
   },
   {
@@ -14,7 +14,7 @@
     "sector": "Broadcast & Local",
     "description": "Owns and operates radio stations and digital audio properties across U.S. markets.",
     "website_url": "https://bbgi.com/",
-    "investor_url": "https://investor.bbgi.com/",
+    "investor_url": "https://bbgi.com/investors/",
     "quote_url": "https://www.tradingview.com/symbols/NASDAQ-BBGI/"
   },
   {
@@ -32,7 +32,7 @@
     "sector": "TV & Streaming",
     "description": "Subscription streaming and media company focused on factual entertainment and nonfiction programming.",
     "website_url": "https://curiositystream.com/",
-    "investor_url": "https://ir.curiositystream.com/",
+    "investor_url": "https://investors.curiositystream.com/",
     "quote_url": "https://www.tradingview.com/symbols/NASDAQ-CURI/"
   },
   {
@@ -41,7 +41,7 @@
     "sector": "News & Publishing",
     "description": "Publishes newspapers and operates digital news properties, alongside technology and investment activities.",
     "website_url": "https://www.dailyjournal.com/",
-    "investor_url": "https://www.dailyjournal.com/",
+    "investor_url": "https://ir.dailyjournal.com/",
     "quote_url": "https://www.tradingview.com/symbols/NASDAQ-DJCO/"
   },
   {
@@ -59,7 +59,7 @@
     "sector": "Broadcast & Local",
     "description": "U.S. local television broadcaster and owner of national news and entertainment networks.",
     "website_url": "https://scripps.com/",
-    "investor_url": "https://investors.scripps.com/",
+    "investor_url": "https://ir.scripps.com/investor-information/",
     "quote_url": "https://www.tradingview.com/symbols/NASDAQ-SSP/"
   },
   {
@@ -86,7 +86,7 @@
     "sector": "TV & Streaming",
     "description": "Sports-focused live television streaming service and digital entertainment platform.",
     "website_url": "https://www.fubo.tv/",
-    "investor_url": "https://investor.fubo.tv/",
+    "investor_url": "https://ir.fubo.tv/overview/default.aspx",
     "quote_url": "https://www.tradingview.com/symbols/NYSE-FUBO/"
   },
   {
@@ -95,7 +95,7 @@
     "sector": "News & Publishing",
     "description": "Diversified holding company with education, media, manufacturing, and other operating businesses.",
     "website_url": "https://www.ghco.com/",
-    "investor_url": "https://www.ghco.com/",
+    "investor_url": "https://www.ghco.com/investor-relations",
     "quote_url": "https://www.tradingview.com/symbols/NYSE-GHC/"
   },
   {
@@ -104,7 +104,7 @@
     "sector": "Broadcast & Local",
     "description": "Local television broadcaster with stations, digital services, and production operations.",
     "website_url": "https://graymedia.com/",
-    "investor_url": "https://graymedia.com/investors/",
+    "investor_url": "https://graymedia.com/investor-relations/",
     "quote_url": "https://www.tradingview.com/symbols/NYSE-GTN/"
   },
   {
@@ -131,7 +131,7 @@
     "sector": "TV & Streaming",
     "description": "Film and television studio producing, acquiring, and distributing entertainment content.",
     "website_url": "https://www.lionsgate.com/",
-    "investor_url": "https://www.lionsgate.com/investors",
+    "investor_url": "https://investors.lionsgate.com/",
     "quote_url": "https://www.tradingview.com/symbols/NYSE-LION/"
   },
   {
@@ -140,7 +140,7 @@
     "sector": "Broadcast & Local",
     "description": "Multicultural media company with radio, digital, and outdoor advertising properties.",
     "website_url": "https://www.mediaco.holdings/",
-    "investor_url": "https://www.mediaco.holdings/investors/",
+    "investor_url": "https://corp.mediaco.now/investors",
     "quote_url": "https://www.tradingview.com/symbols/NASDAQ-MDIA/"
   },
   {
@@ -158,7 +158,7 @@
     "sector": "News & Publishing",
     "description": "Global news and digital subscription company publishing The New York Times and other products.",
     "website_url": "https://www.nytco.com/",
-    "investor_url": "https://investors.nytco.com/",
+    "investor_url": "https://www.nytco.com/investors/",
     "quote_url": "https://www.tradingview.com/symbols/NYSE-NYT/"
   },
   {
@@ -167,7 +167,7 @@
     "sector": "News & Publishing",
     "description": "Global media company with news, information services, book publishing, and digital real estate operations.",
     "website_url": "https://newscorp.com/",
-    "investor_url": "https://newscorp.com/investors/",
+    "investor_url": "https://investors.newscorp.com/",
     "quote_url": "https://www.tradingview.com/symbols/NASDAQ-NWSA/"
   },
   {
@@ -203,7 +203,7 @@
     "sector": "News & Publishing",
     "description": "Digital publishing company operating lifestyle, news, and service brands including People and Better Homes & Gardens.",
     "website_url": "https://people.inc/",
-    "investor_url": "https://investors.people.inc/",
+    "investor_url": "https://ir.people-incorporated.com/",
     "quote_url": "https://www.tradingview.com/symbols/NASDAQ-PPLI/"
   },
   {
@@ -248,7 +248,7 @@
     "sector": "Broadcast & Local",
     "description": "Television broadcaster and media company with local stations, networks, and digital operations.",
     "website_url": "https://sbgi.net/",
-    "investor_url": "https://sbgi.net/investors/",
+    "investor_url": "https://sbgi.net/investor-relations/",
     "quote_url": "https://www.tradingview.com/symbols/NASDAQ-SBGI/"
   },
   {
@@ -302,7 +302,7 @@
     "sector": "Broadcast & Local",
     "description": "Local media company with radio stations, digital marketing services, and live events.",
     "website_url": "https://www.townsquaremedia.com/",
-    "investor_url": "https://investors.townsquaremedia.com/",
+    "investor_url": "https://www.townsquaremedia.com/equity-investors",
     "quote_url": "https://www.tradingview.com/symbols/NYSE-TSQ/"
   },
   {
@@ -311,7 +311,7 @@
     "sector": "Broadcast & Local",
     "description": "Multimedia company focused on Black audiences, with radio, television, digital, and entertainment businesses.",
     "website_url": "https://urban1.com/",
-    "investor_url": "https://urban1.com/investors/",
+    "investor_url": "https://urban1.com/investor-relations",
     "quote_url": "https://www.tradingview.com/symbols/NASDAQ-UONE/"
   },
   {
@@ -347,7 +347,7 @@
     "sector": "News & Publishing",
     "description": "Publicly traded company included in MJR's news and publishing stock category.",
     "website_url": "https://paradium.ai/",
-    "investor_url": "https://paradium.ai/",
+    "investor_url": "https://investors.paradium.ai/",
     "quote_url": "https://www.tradingview.com/symbols/AMEX-PAAI/"
   }
 ]
