@@ -12,8 +12,8 @@
 <path d="M1040 0h160v640h-25z" fill="#EF5A56" opacity=".075"/>
 <g fill="#EF5A56" opacity=".45"><rect x="820" y="165" width="42" height="22" rx="6"/><rect x="820" y="210" width="315" height="10" rx="5"/><rect x="820" y="245" width="270" height="10" rx="5"/><rect x="820" y="280" width="300" height="10" rx="5"/><rect x="820" y="315" width="220" height="10" rx="5"/></g>
 <text x="1160" y="530" text-anchor="end" class="label" font-size="150px" fill="#fff" opacity=".07">TDAY</text>
-<rect x="66" y="54" width="252" height="44" rx="22" fill="#EF5A56"/>
-<text x="88" y="82" class="label" font-size="16px" letter-spacing="1" fill="#0a1424">MJR FINANCIAL COVERAGE</text>
+<rect x="66" y="54" width="310" height="44" rx="22" fill="#EF5A56"/>
+<text x="84" y="82" class="label" font-size="15px" letter-spacing=".5" fill="#0a1424">MJR FINANCIAL COVERAGE</text>
 <rect x="66" y="127" width="86" height="8" rx="4" fill="#EF5A56"/>
 <text x="68" y="250" class="title" font-size="70px">USA TODAY Co.</text>
 <rect x="66" y="388" width="135" height="58" rx="13" fill="#EF5A56"/>

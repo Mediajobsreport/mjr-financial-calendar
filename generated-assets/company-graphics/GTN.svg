@@ -12,8 +12,8 @@
 <path d="M1040 0h160v640h-25z" fill="#E99B4B" opacity=".075"/>
 <g fill="none" stroke="#E99B4B" stroke-width="8" opacity=".58"><path d="M855 290a110 110 0 0 1 220 0"/><path d="M815 290a150 150 0 0 1 300 0"/><path d="M775 290a190 190 0 0 1 380 0"/></g><circle cx="965" cy="290" r="14" fill="#E99B4B" opacity=".8"/>
 <text x="1160" y="530" text-anchor="end" class="label" font-size="150px" fill="#fff" opacity=".07">GTN</text>
-<rect x="66" y="54" width="252" height="44" rx="22" fill="#E99B4B"/>
-<text x="88" y="82" class="label" font-size="16px" letter-spacing="1" fill="#0a1424">MJR FINANCIAL COVERAGE</text>
+<rect x="66" y="54" width="310" height="44" rx="22" fill="#E99B4B"/>
+<text x="84" y="82" class="label" font-size="15px" letter-spacing=".5" fill="#0a1424">MJR FINANCIAL COVERAGE</text>
 <rect x="66" y="127" width="86" height="8" rx="4" fill="#E99B4B"/>
 <text x="68" y="250" class="title" font-size="70px">Gray Media</text>
 <rect x="66" y="388" width="135" height="58" rx="13" fill="#E99B4B"/>
