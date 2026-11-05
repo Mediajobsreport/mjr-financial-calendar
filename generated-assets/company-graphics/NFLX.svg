@@ -10,7 +10,8 @@
 <ellipse cx="960" cy="260" rx="390" ry="350" fill="url(#glow)"/>
 <path d="M770 0h430v640h-170z" fill="#fff" opacity=".025"/>
 <path d="M1040 0h160v640h-25z" fill="#E50914" opacity=".075"/>
-<g stroke="#E50914" stroke-width="7" fill="none" opacity=".55"><rect x="820" y="155" width="300" height="205" rx="28"/><path d="M930 205l95 53-95 54z" fill="#E50914" stroke="none" opacity=".7"/><rect x="1048" y="205" width="32" height="105" rx="9" fill="#E50914" stroke="none" opacity=".55"/></g>
+<rect x="790" y="144" width="350" height="230" rx="24" fill="#ffffff"/>
+<image href="https://www.citypng.com/public/uploads/preview/-11594682142fapt8mnyud.png" x="812" y="157" width="306" height="204" preserveAspectRatio="xMidYMid meet"/>
 <text x="1160" y="530" text-anchor="end" class="label" font-size="150px" fill="#fff" opacity=".07">NFLX</text>
 <rect x="66" y="54" width="310" height="44" rx="22" fill="#E50914"/>
 <text x="84" y="82" class="label" font-size="15px" letter-spacing=".5" fill="#0a1424">MJR FINANCIAL COVERAGE</text>

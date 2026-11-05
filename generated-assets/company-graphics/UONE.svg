@@ -10,7 +10,8 @@
 <ellipse cx="960" cy="260" rx="390" ry="350" fill="url(#glow)"/>
 <path d="M770 0h430v640h-170z" fill="#fff" opacity=".025"/>
 <path d="M1040 0h160v640h-25z" fill="#D7B55C" opacity=".075"/>
-<g fill="none" stroke="#D7B55C" stroke-width="8" opacity=".58"><path d="M855 290a110 110 0 0 1 220 0"/><path d="M815 290a150 150 0 0 1 300 0"/><path d="M775 290a190 190 0 0 1 380 0"/></g><circle cx="965" cy="290" r="14" fill="#D7B55C" opacity=".8"/>
+<rect x="790" y="144" width="350" height="230" rx="24" fill="#ffffff"/>
+<image href="https://aimmgrowthfronts.com/wp-content/uploads/2024/02/U1_BLK.jpg" x="812" y="157" width="306" height="204" preserveAspectRatio="xMidYMid meet"/>
 <text x="1160" y="530" text-anchor="end" class="label" font-size="150px" fill="#fff" opacity=".07">UONE</text>
 <rect x="66" y="54" width="310" height="44" rx="22" fill="#D7B55C"/>
 <text x="84" y="82" class="label" font-size="15px" letter-spacing=".5" fill="#0a1424">MJR FINANCIAL COVERAGE</text>

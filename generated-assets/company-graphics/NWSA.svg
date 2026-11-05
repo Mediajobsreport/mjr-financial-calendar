@@ -10,7 +10,8 @@
 <ellipse cx="960" cy="260" rx="390" ry="350" fill="url(#glow)"/>
 <path d="M770 0h430v640h-170z" fill="#fff" opacity=".025"/>
 <path d="M1040 0h160v640h-25z" fill="#D14F55" opacity=".075"/>
-<g fill="#D14F55" opacity=".45"><rect x="820" y="165" width="42" height="22" rx="6"/><rect x="820" y="210" width="315" height="10" rx="5"/><rect x="820" y="245" width="270" height="10" rx="5"/><rect x="820" y="280" width="300" height="10" rx="5"/><rect x="820" y="315" width="220" height="10" rx="5"/></g>
+<rect x="790" y="144" width="350" height="230" rx="24" fill="#ffffff"/>
+<image href="https://cdn.prod.website-files.com/68de9c28ee29c8b50967ec08/6911f26a5fe85964d2966596_News_Corp_%282013%E2%80%93present%29-Logo.wine-p-1080.png" x="812" y="157" width="306" height="204" preserveAspectRatio="xMidYMid meet"/>
 <text x="1160" y="530" text-anchor="end" class="label" font-size="150px" fill="#fff" opacity=".07">NWSA</text>
 <rect x="66" y="54" width="310" height="44" rx="22" fill="#D14F55"/>
 <text x="84" y="82" class="label" font-size="15px" letter-spacing=".5" fill="#0a1424">MJR FINANCIAL COVERAGE</text>
