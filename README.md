@@ -7,8 +7,9 @@ A small, responsive calendar for confirmed earnings releases, investor calls and
 - `data/companies.json` holds company names, sectors, tickers and investor-relations links.
 - `data/events.json` holds confirmed events and their company-source links.
 - `scripts/build.py` validates event records and produces `calendar.json` for the page.
-- GitHub Actions rebuilds the data on a schedule and deploys the static calendar to GitHub Pages.
-- The page provides search and sector filters; event cards link to announcements, webcasts and financial reports.
+- GitHub Actions rebuilds the data on a six-hour schedule, deploys the static calendar to GitHub Pages, and publishes eligible verified earnings notices as MJR News Articles using the repository secret `BD_API_KEY`.
+- The page provides search and stock-category filters; its collapsed, searchable company directory covers all 39 tickers from MJR stock reports with company, investor-relations and quote links. Event cards link to announcements, webcasts and financial reports.
+- `scripts/publish.py` posts confirmed events within 14 days, deduplicates by official source URL in `data/published-events.json`, and limits publishing to two notices per day.
 
 ## Add or update an event
 
@@ -26,4 +27,4 @@ To embed it in Brilliant Directories, add an iframe to the body of an MJR custom
 <iframe src="https://mediajobsreport.github.io/mjr-financial-calendar/" title="MJR Media Financial Calendar" loading="lazy" style="width:100%;height:1100px;border:0" referrerpolicy="strict-origin-when-cross-origin"></iframe>
 ```
 
-The calendar is editorial reference material, not investment advice. The current build uses verified event records entered in `data/events.json`; scheduled builds validate and republish those records but do not discover new events automatically.
+The calendar and generated notices are editorial reference material, not investment advice. Event records are entered in `data/events.json` only after verification against official company sources. The workflow publishes concise schedule announcements; it does not discover new events or report financial results automatically. Editors must add and verify new events before they can be published.
