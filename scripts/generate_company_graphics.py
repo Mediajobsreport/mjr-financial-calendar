@@ -27,6 +27,47 @@ ACCENTS = {
     "TSQ": "#55A8E1", "UONE": "#D7B55C", "TDAY": "#EF5A56",
     "WBD": "#A36BE0", "WMG": "#E9E9EC", "PAAI": "#7E7BEA",
 }
+LOGO_URLS = {
+    "AMCX": "https://seeklogo.com/images/A/amc-networks-logo-0B6DCEC226-seeklogo.com.png",
+    "BBGI": "https://bbgi.com/wp-content/uploads/2023/09/Beasley-Media-Group-LLC_Logo-01.png",
+    "CMCSA": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Comcast.svg/3840px-Comcast.svg.png",
+    "CURI": "https://www.sec.gov/Archives/edgar/data/1776909/000162828025014738/curi-20241231_g1.jpg",
+    "DJCO": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Daily_Journal_Corporation_logo.svg",
+    "DIS": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/The_Walt_Disney_company_logo.svg/3840px-The_Walt_Disney_company_logo.svg.png",
+    "SSP": "https://cdn.mos.cms.futurecdn.net/XbQBCvQ7NUDURkSCqLrvaK.jpg",
+    "EVC": "https://s29.q4cdn.com/283296970/files/design/new/EVC_Purple.png",
+    "FOXA": "https://static.wikia.nocookie.net/mako-movies/images/4/4c/2880px-FOX_wordmark.svg.png/revision/latest/scale-to-width-down/1200?cb=20190127012836",
+    "FUBO": "https://ppc.land/content/images/size/w2000/2025/10/fubo.jpg",
+    "GHC": "https://companieslogo.com/img/orig/GHC-3ff27dd7.png?t=1720244492",
+    "GTN": "https://cloudfront-us-east-1.images.arcpublishing.com/gray/6MKDJS7TTFCXLNYYOBWOMQ5Y2Y.jpg",
+    "IHRT": "https://companieslogo.com/img/orig/IHRT_BIG-8cdd2bdc.png?t=1688833504",
+    "LEE": "https://assets.quadcitiesbusiness.com/2024/07/Lee-logo.jpg",
+    "LION": "https://cinema39.com/cdn/shop/collections/lionsgate-studios28120.logowik.com.webp?v=1761699112",
+    "MDIA": "https://mms.businesswire.com/media/20260120561943/en/2696793/22/MEDIACO_LOGO_2026.jpg",
+    "NFLX": "https://www.citypng.com/public/uploads/preview/-11594682142fapt8mnyud.png",
+    "NYT": "https://mms.businesswire.com/media/20191106005480/en/754837/23/4070657_NYTCO-Logo-B-Large-K-CMYK-ClearSpace.jpg",
+    "NWSA": "https://cdn.prod.website-files.com/68de9c28ee29c8b50967ec08/6911f26a5fe85964d2966596_News_Corp_%282013%E2%80%93present%29-Logo.wine-p-1080.png",
+    "NMAX": "https://mms.businesswire.com/media/20250311246807/en/2406516/22/Newsmax_logo.svg.jpg",
+    "NXST": "https://cdn.mos.cms.futurecdn.net/SNwEzqB4wFhkpeio2aRxPZ-970-75.png",
+    "PSKY": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Paramount_Pictures_Logo_2025.svg/3840px-Paramount_Pictures_Logo_2025.svg.png",
+    "PPLI": "https://logowik.com/content/uploads/images/people-inc2151.logowik.com.webp",
+    "RSVR": "https://companieslogo.com/img/orig/RSVR-f0aed646.png?t=1668498066",
+    "ROKU": "https://logospng.org/download/roku/logo-roku-2048.png",
+    "RUM": "https://mma.prnewswire.com/media/1897922/Rumble_Logo.jpg?p=facebook",
+    "SGA": "https://mma.prnewswire.com/media/197361/saga_communications_logo.jpg?p=facebook",
+    "SBGI": "https://sbgicdntest.z13.web.core.windows.net/Careers/Corporate/Home/sinclairblklogo.png",
+    "SIRI": "https://mmx.prnewswire.com/media/MS1960335/SiriusXM-Logo.jpg?id=OA2799095&p=facebook",
+    "SONY": "https://www.citypng.com/public/uploads/preview/hd-sony-black-logo-transparent-png-701751694773079o9p4y1cy4c.png?v=2026031811",
+    "SPOT": "https://www.citypng.com/public/uploads/preview/logo-of-spotify-music-app-png-image-1166193987184wgya4gur.png",
+    "STRZ": "https://cdn.prod.website-files.com/66b2141a9bb474b60eaef76d/66b604465b1f49f05642b0ee_watch-starz-outside-us.jpg",
+    "TME": "https://wdwkmusic.com/assets/img/stories/index-stories-tencent.jpg",
+    "TSQ": "https://companieslogo.com/img/orig/TSQ_BIG-a03a06be.png?t=1720244494",
+    "UONE": "https://aimmgrowthfronts.com/wp-content/uploads/2024/02/U1_BLK.jpg",
+    "TDAY": "https://s202.q4cdn.com/162862548/files/design/svg/USATCO_Logo_Tertiary_FullColor_300ppi.png",
+    "WBD": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Warner_Bros._Discovery.svg/3840px-Warner_Bros._Discovery.svg.png",
+    "WMG": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Warner_Music_Group_logo_%282021%29.svg/3840px-Warner_Music_Group_logo_%282021%29.svg.png",
+}
+
 SECTOR_LABELS = {
     "Broadcast & Local": "BROADCAST & LOCAL MEDIA",
     "News & Publishing": "NEWS & PUBLISHING",
@@ -91,7 +132,8 @@ def render(company: dict) -> Path:
 <ellipse cx="960" cy="260" rx="390" ry="350" fill="url(#glow)"/>
 <path d="M770 0h430v640h-170z" fill="#fff" opacity=".025"/>
 <path d="M1040 0h160v640h-25z" fill="{accent}" opacity=".075"/>
-{motif(sector, accent)}
+<rect x="790" y="144" width="350" height="230" rx="24" fill="#ffffff"/>
+{(f'<image href="{esc(LOGO_URLS[ticker])}" x="812" y="157" width="306" height="204" preserveAspectRatio="xMidYMid meet"/>' if ticker in LOGO_URLS else f'<text x="965" y="266" text-anchor="middle" font-family="Georgia,serif" font-size="48px" fill="#111">Paradium.AI</text>')}
 <text x="1160" y="530" text-anchor="end" class="label" font-size="150px" fill="#fff" opacity=".07">{esc(ticker)}</text>
 <rect x="66" y="54" width="310" height="44" rx="22" fill="{accent}"/>
 <text x="84" y="82" class="label" font-size="15px" letter-spacing=".5" fill="#0a1424">MJR FINANCIAL COVERAGE</text>
