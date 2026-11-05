@@ -8,9 +8,11 @@
   <style>
     :root{font-family:Arial,Helvetica,sans-serif;color:#172b4d;background:#f4f7fb;font-synthesis:none}
     *{box-sizing:border-box}body{margin:0}.shell{max-width:1120px;margin:auto;padding:28px 20px 48px}
-    header{padding:26px 28px;border-radius:16px;background:linear-gradient(125deg,#102d50,#1769a6);color:#fff}
-    .eyebrow{margin:0 0 9px;font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;color:#bcdcff;font-weight:700}
-    h1{font-size:clamp(1.7rem,4vw,2.5rem);line-height:1.12;margin:0 0 10px}header p:last-child{max-width:760px;margin:0;color:#e6f1ff;line-height:1.55}
+    .hero{display:grid;grid-template-columns:minmax(180px,1fr) minmax(0,2fr) minmax(190px,1fr);align-items:center;gap:24px;padding:24px 30px;border-radius:16px;background:#1d3458;color:#fff;box-shadow:0 12px 28px #0d27451c}
+    .hero-brand{display:flex;align-items:center;justify-content:center;padding-right:22px;border-right:1px solid #ffffff38;min-height:74px}.hero-brand img{display:block;width:min(100%,230px);height:auto}
+    .hero-copy{text-align:center}.eyebrow{margin:0 0 8px;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:#f1c75b;font-weight:800}
+    .hero h1{font-size:clamp(1.55rem,3vw,2.15rem);line-height:1.08;margin:0 0 8px;color:#fff}.hero-intro{max-width:650px;margin:0 auto;color:#dce5f3;line-height:1.5;font-size:.93rem}
+    .hero-status{display:flex;justify-content:center;align-items:center;min-height:74px;padding-left:22px;border-left:1px solid #ffffff38;color:#f3f6fb;font-size:.85rem;line-height:1.5}.hero-status span{display:block}.hero-status b{color:#f1c75b;margin-right:6px}
     .filters{display:flex;gap:12px;flex-wrap:wrap;margin:20px 0 24px}.filters label{font-size:.8rem;font-weight:700;color:#52657e;display:grid;gap:6px}
     input,select{min-width:210px;padding:11px 12px;border:1px solid #c7d3e1;border-radius:8px;background:#fff;font:inherit;color:#172b4d}
     h2{font-size:1.25rem;margin:28px 0 12px}.count{font-weight:400;font-size:.9rem;color:#64748b}
@@ -18,18 +20,24 @@
     .event{display:grid;grid-template-columns:126px 1fr;gap:16px}.date{font-weight:800;color:#135a91;line-height:1.3}.date small{display:block;margin-top:5px;color:#66758b;font-size:.78rem;font-weight:500}
     .company-name{font-size:1rem;font-weight:800}.event-title{font-weight:700;margin:6px 0 8px}.meta{font-size:.82rem;color:#66758b;margin:0 0 11px}
     a{color:#155e9c;font-weight:700;text-decoration:none}a:hover{text-decoration:underline}.links{display:flex;gap:15px;flex-wrap:wrap;font-size:.88rem}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(225px,1fr));gap:12px}.company p{margin:6px 0 12px;color:#66758b;font-size:.84rem}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:12px}.company p{margin:8px 0 12px;color:#66758b;font-size:.84rem;line-height:1.45}
+    .company-top{display:flex;justify-content:space-between;gap:12px;align-items:start}.ticker{white-space:nowrap;border-radius:999px;background:#edf4fb;padding:4px 9px;color:#234c77;font-size:.75rem;font-weight:800}
+    .company-category{color:#66758b;font-size:.77rem;margin-top:4px}.directory{margin-top:28px}
+    .directory summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:15px 18px;background:#fff;border:1px solid #dbe4ee;border-radius:12px;font-weight:800}
+    .directory summary::-webkit-details-marker{display:none}.directory summary:after{content:'+';font-size:1.25rem;color:#155e9c}.directory[open] summary{border-radius:12px 12px 0 0}.directory[open] summary:after{content:'−'}
+    .directory-count{font-weight:500;color:#64748b;font-size:.88rem;margin-left:auto}.directory .grid{padding:12px;background:#eef3f8;border:1px solid #dbe4ee;border-top:0;border-radius:0 0 12px 12px}
     .empty,.note{padding:16px;background:#fff;border:1px solid #dbe4ee;border-radius:10px;color:#52657e;line-height:1.5}.note{margin-top:20px;font-size:.82rem}
     footer{margin-top:26px;color:#718096;font-size:.78rem}
-    @media(max-width:580px){.shell{padding:16px 12px 32px}header{padding:22px 18px}.event{grid-template-columns:1fr;gap:8px}.date{font-size:.9rem}input,select{width:100%}}
+    @media(max-width:760px){.hero{grid-template-columns:1fr;gap:14px;padding:22px 18px}.hero-brand{border-right:0;border-bottom:1px solid #ffffff38;padding:0 0 14px;min-height:auto}.hero-brand img{width:190px}.hero-status{border-left:0;border-top:1px solid #ffffff38;padding:12px 0 0;min-height:auto}.hero-copy{text-align:center}}
+    @media(max-width:580px){.shell{padding:16px 12px 32px}.event{grid-template-columns:1fr;gap:8px}.date{font-size:.9rem}input,select{width:100%}}
   </style>
 </head>
 <body>
 <main class="shell">
-  <header>
-    <p class="eyebrow">Media Jobs Report · Financial Coverage</p>
-    <h1>Media Financial Calendar</h1>
-    <p>Upcoming earnings releases, investor calls and financial reports from media companies. Calendar dates appear only after verification against a company announcement.</p>
+  <header class="hero" aria-label="MJR financial coverage">
+    <div class="hero-brand"><img src="https://www.mediajobsreport.com/images/Social-Profile-Pic-2-Media-Jobs-Report-Social-Media-Icon.png" alt="Media Jobs Report"></div>
+    <div class="hero-copy"><p class="eyebrow">Media Jobs Report Financial Coverage</p><h1>MJR Financial Calendar</h1><p class="hero-intro">Earnings dates, investor calls and financial reports for the publicly traded companies in MJR’s stock coverage.</p></div>
+    <div class="hero-status"><span><b>✓</b> Official company sources linked<br>Search and filter by stock category</span></div>
   </header>
   <section class="filters" aria-label="Calendar filters">
     <label>Search companies and events<input id="q" type="search" placeholder="Try Gray Media or earnings call"></label>
@@ -39,10 +47,7 @@
     <h2 id="events-heading">Confirmed events <span id="event-count" class="count"></span></h2>
     <div id="events" class="list" aria-live="polite"><p class="empty">Loading calendar…</p></div>
   </section>
-  <section aria-labelledby="companies-heading">
-    <h2 id="companies-heading">Company investor relations</h2>
-    <div id="companies" class="grid"></div>
-  </section>
+  <details class="directory" id="company-directory"><summary id="companies-heading">Company directory <span id="company-count" class="directory-count"></span></summary><div id="companies" class="grid"></div></details>
   <p class="note">Dates and times are shown as announced by each company. Links open company or regulatory source material. This calendar is for editorial reference and is not investment advice.</p>
   <footer id="updated"></footer>
 </main>
@@ -54,7 +59,8 @@ const companyFor=e=>data.companies.find(c=>c.name===e.company)||{};
 function matches(item,q,sector){const c=companyFor(item);return(!sector||c.sector===sector)&&(!q||`${JSON.stringify(item)} ${c.sector||''} ${c.ticker||''}`.toLowerCase().includes(q))}
 function render(){const q=document.querySelector('#q').value.trim().toLowerCase(),sector=document.querySelector('#sector').value;const events=data.events.filter(e=>matches(e,q,sector));document.querySelector('#event-count').textContent=`(${events.length})`;
   document.querySelector('#events').innerHTML=events.length?events.map(e=>{const c=companyFor(e),src=url(e.source_url),web=url(e.webcast_url),report=url(e.report_url);const when=[e.time,e.timezone].filter(Boolean).join(' ');return `<article class="event"><div class="date">${esc(new Date(`${e.date}T12:00:00`).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}))}<small>${esc(when||'Time not announced')}</small></div><div><div class="company-name">${esc(e.company)}</div><p class="event-title">${esc(e.title)}</p><p class="meta">${esc(c.sector||'Media')} · ${esc(e.event_type||'Financial event')}${e.fiscal_period?` · ${esc(e.fiscal_period)}`:''}</p><div class="links">${src?`<a href="${esc(src)}" target="_blank" rel="noopener">Company announcement</a>`:''}${web?`<a href="${esc(web)}" target="_blank" rel="noopener">Webcast / event</a>`:''}${report?`<a href="${esc(report)}" target="_blank" rel="noopener">Financial report</a>`:''}</div></div></article>`}).join(''):'<p class="empty">No confirmed events match these filters.</p>';
-  document.querySelector('#companies').innerHTML=data.companies.filter(c=>(!sector||c.sector===sector)&&(!q||JSON.stringify(c).toLowerCase().includes(q))).map(c=>{const href=url(c.investor_url);return `<article class="company"><strong>${esc(c.name)}</strong><p>${esc(c.sector)} · ${esc(c.ticker)}</p>${href?`<a href="${esc(href)}" target="_blank" rel="noopener">Investor relations</a>`:''}</article>`}).join('')}
+  const directory=document.querySelector('#company-directory');const companies=data.companies.filter(c=>(!sector||c.sector===sector)&&(!q||JSON.stringify(c).toLowerCase().includes(q)));document.querySelector('#company-count').textContent=`(${companies.length} of ${data.companies.length} companies)`;directory.open=Boolean(q||sector);
+  document.querySelector('#companies').innerHTML=companies.map(c=>{const ir=url(c.investor_url),site=url(c.website_url),quote=url(c.quote_url);return `<article class="company"><div class="company-top"><div><strong>${esc(c.name)}</strong><div class="company-category">${esc(c.sector)}</div></div><span class="ticker">${esc(c.ticker)}</span></div><p>${esc(c.description||'Publicly traded media company covered in MJR stock reports.')}</p><div class="links">${ir?`<a href="${esc(ir)}" target="_blank" rel="noopener">Investor relations</a>`:''}${site?`<a href="${esc(site)}" target="_blank" rel="noopener">Company site</a>`:''}${quote?`<a href="${esc(quote)}" target="_blank" rel="noopener">Stock quote</a>`:''}</div></article>`}).join('')}
 fetch('./calendar.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('Calendar unavailable');return r.json()}).then(x=>{data=x;const sectors=[...new Set(data.companies.map(c=>c.sector).filter(Boolean))].sort();document.querySelector('#sector').insertAdjacentHTML('beforeend',sectors.map(s=>`<option value="${esc(s)}">${esc(s)}</option>`).join(''));render();document.querySelector('#updated').textContent=`Calendar data last updated ${new Date(data.updated_utc).toLocaleString('en-US',{dateStyle:'medium',timeStyle:'short',timeZone:'America/New_York'})} ET.`}).catch(()=>document.querySelector('#events').innerHTML='<p class="empty">Calendar data is temporarily unavailable.</p>');
 document.querySelector('#q').addEventListener('input',render);document.querySelector('#sector').addEventListener('change',render);
 </script>
