@@ -102,7 +102,6 @@ def render(company: dict) -> Path:
 <text x="66" y="486" class="label" font-size="19px" letter-spacing="1.4" fill="#d8e1ee">{esc(sector_label)}</text>
 <path d="M66 564H1134" stroke="#fff" stroke-opacity=".18" stroke-width="2"/>
 <text x="66" y="600" font-family="Arial,Helvetica,sans-serif" font-size="17px" letter-spacing=".4" fill="#c1cddd">EARNINGS  •  INVESTOR CALLS  •  COMPANY NEWS</text>
-<text x="1134" y="600" text-anchor="end" class="label" font-size="14px" fill="#96a4b8">1200 × 640</text>
 </svg>
 '''
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
