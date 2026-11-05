@@ -16,6 +16,8 @@ from zoneinfo import ZoneInfo
 ROOT = Path(__file__).resolve().parents[1]
 STATE_PATH = ROOT / "data" / "published-events.json"
 EVENTS_PATH = ROOT / "data" / "events.json"
+COMPANIES_PATH = ROOT / "data" / "companies.json"
+COMPANY_GRAPHICS_BASE = "https://mediajobsreport.github.io/mjr-financial-calendar/generated-assets/company-graphics"
 ET = ZoneInfo("America/New_York")
 API_URL = "https://www.mediajobsreport.com/api/v2/data_posts/create"
 MJR_LOGO = "https://www.mediajobsreport.com/images/Social-Profile-Pic-2-Media-Jobs-Report-Social-Media-Icon.png"
@@ -39,6 +41,20 @@ def valid_https(url: str | None) -> bool:
         return False
     parsed = urllib.parse.urlparse(url)
     return parsed.scheme == "https" and bool(parsed.netloc)
+
+
+def company_graphic_url(event: dict) -> str:
+    companies = read_json(COMPANIES_PATH, [])
+    by_name = {
+        "".join(ch for ch in company.get("name", "").casefold() if ch.isalnum()): company.get("ticker", "").upper()
+        for company in companies
+    }
+    event_ticker = str(event.get("ticker", "")).strip().upper()
+    key = "".join(ch for ch in str(event.get("company", "")).casefold() if ch.isalnum())
+    ticker = event_ticker or by_name.get(key)
+    if ticker:
+        return COMPANY_GRAPHICS_BASE + "/" + urllib.parse.quote(ticker) + ".svg"
+    return MJR_LOGO
 
 
 def event_content(event: dict) -> str:
@@ -83,7 +99,7 @@ def publish(event: dict, api_key: str) -> int:
         "post_caption": caption,
         "post_content": event_content(event),
         "post_status": "1",
-        "post_image": MJR_LOGO,
+        "post_image": company_graphic_url(event),
         "auto_image_import": "1",
         "post_org_url": event["source_url"],
     }
