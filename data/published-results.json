@@ -1,1 +1,92 @@
-{"published":[]}
+{
+  "published": [
+    {
+      "accession": "0001628280-26-068663",
+      "company": "Fox Corporation",
+      "ticker": "FOXA",
+      "release_url": "https://www.sec.gov/Archives/edgar/data/1754301/000162828026068663/fox-20261102.htm",
+      "post_id": 5358,
+      "published_at": "2026-11-05T15:50:45-05:00"
+    },
+    {
+      "accession": "0001628280-26-068875",
+      "company": "People Inc.",
+      "ticker": "PPLI",
+      "release_url": "https://www.sec.gov/Archives/edgar/data/1800227/000162828026068875/ppli-20261102.htm",
+      "post_id": 5359,
+      "published_at": "2026-11-05T15:50:46-05:00"
+    },
+    {
+      "accession": "0001628280-26-068877",
+      "company": "Roku",
+      "ticker": "ROKU",
+      "release_url": "https://www.sec.gov/Archives/edgar/data/1428439/000162828026068877/wk-20261102.htm",
+      "post_id": 5360,
+      "published_at": "2026-11-05T15:50:46-05:00"
+    },
+    {
+      "accession": "0001564708-26-000248",
+      "company": "News Corp",
+      "ticker": "NWSA",
+      "release_url": "https://www.sec.gov/Archives/edgar/data/1564708/000156470826000248/nws-20261104.htm",
+      "post_id": 5361,
+      "published_at": "2026-11-05T15:50:47-05:00"
+    },
+    {
+      "accession": "0001104659-26-122378",
+      "company": "Reservoir Media",
+      "ticker": "RSVR",
+      "release_url": "https://www.sec.gov/Archives/edgar/data/1824403/000110465926122378/tm2628904d1_8k.htm",
+      "post_id": 5362,
+      "published_at": "2026-11-05T15:50:47-05:00"
+    },
+    {
+      "accession": "0001971213-26-000046",
+      "company": "Sinclair",
+      "ticker": "SBGI",
+      "release_url": "https://www.sec.gov/Archives/edgar/data/1971213/000197121326000046/sbgi-20261104.htm",
+      "post_id": 5363,
+      "published_at": "2026-11-05T15:50:48-05:00"
+    },
+    {
+      "accession": "0000071691-26-000039",
+      "company": "The New York Times Company",
+      "ticker": "NYT",
+      "release_url": "https://www.sec.gov/Archives/edgar/data/71691/000007169126000039/nyt-20261104.htm",
+      "post_id": 5364,
+      "published_at": "2026-11-05T15:50:48-05:00"
+    },
+    {
+      "accession": "0001193125-26-448528",
+      "company": "Nexstar Media Group",
+      "ticker": "NXST",
+      "release_url": "https://www.sec.gov/Archives/edgar/data/1142417/000119312526448528/nxst-20261105.htm",
+      "post_id": 5365,
+      "published_at": "2026-11-05T15:50:49-05:00"
+    },
+    {
+      "accession": "0001104659-26-122964",
+      "company": "Sony Group",
+      "ticker": "SONY",
+      "release_url": "https://www.sec.gov/Archives/edgar/data/313838/000110465926122964/tm2628525d5_6k.htm",
+      "post_id": 5366,
+      "published_at": "2026-11-05T15:50:49-05:00"
+    },
+    {
+      "accession": "0001104659-26-122935",
+      "company": "Sony Group",
+      "ticker": "SONY",
+      "release_url": "https://www.sec.gov/Archives/edgar/data/313838/000110465926122935/tm2628525d4_6k.htm",
+      "post_id": 5367,
+      "published_at": "2026-11-05T15:50:50-05:00"
+    },
+    {
+      "accession": "0001579684-26-000056",
+      "company": "USA TODAY Co.",
+      "ticker": "TDAY",
+      "release_url": "https://www.sec.gov/Archives/edgar/data/1579684/000157968426000056/tday-20261105.htm",
+      "post_id": 5368,
+      "published_at": "2026-11-05T15:50:50-05:00"
+    }
+  ]
+}
