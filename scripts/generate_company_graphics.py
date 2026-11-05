@@ -36,7 +36,7 @@ LOGO_URLS = {
     "BBGI": "https://bbgi.com/wp-content/uploads/2023/09/Beasley-Media-Group-LLC_Logo-01.png",
     "CMCSA": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Comcast.svg/3840px-Comcast.svg.png",
     "CURI": "https://upload.wikimedia.org/wikipedia/commons/3/37/CuriosityStream.svg",
-    "DJCO": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Daily_Journal_Corporation_logo.svg",
+    "DJCO": "https://upload.wikimedia.org/wikipedia/commons/0/05/Daily_Journal_Corporation_logo.svg",
     "DIS": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/The_Walt_Disney_company_logo.svg/3840px-The_Walt_Disney_company_logo.svg.png",
     "SSP": "https://cdn.mos.cms.futurecdn.net/XbQBCvQ7NUDURkSCqLrvaK.jpg",
     "EVC": "https://s29.q4cdn.com/283296970/files/design/new/EVC_Purple.png",
