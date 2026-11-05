@@ -9,7 +9,8 @@ A small, responsive calendar for confirmed earnings releases, investor calls and
 - `scripts/build.py` validates event records and produces `calendar.json` for the page.
 - GitHub Actions rebuilds the data on a six-hour schedule, deploys the static calendar to GitHub Pages, and publishes eligible verified earnings notices as MJR News Articles using the repository secret `BD_API_KEY`.
 - The page provides search and stock-category filters; its collapsed, searchable company directory covers all 39 tickers from MJR stock reports with company, investor-relations and quote links. Event cards link to announcements, webcasts and financial reports.
-- `scripts/publish.py` posts confirmed events within 14 days, deduplicates by official source URL in `data/published-events.json`, and limits publishing to two notices per day.
+- `scripts/generate_company_graphics.py` creates a 1200×640 editorial SVG graphic for every tracked company in `generated-assets/company-graphics/`. Graphics use the company name, ticker, sector motif and an editorial accent color.
+- `scripts/publish.py` posts confirmed events within 14 days, selects the matching company graphic using the ticker, deduplicates by official source URL in `data/published-events.json`, and limits publishing to two notices per day.
 
 ## Add or update an event
 
