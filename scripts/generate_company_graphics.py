@@ -93,8 +93,8 @@ def render(company: dict) -> Path:
 <path d="M1040 0h160v640h-25z" fill="{accent}" opacity=".075"/>
 {motif(sector, accent)}
 <text x="1160" y="530" text-anchor="end" class="label" font-size="150px" fill="#fff" opacity=".07">{esc(ticker)}</text>
-<rect x="66" y="54" width="252" height="44" rx="22" fill="{accent}"/>
-<text x="88" y="82" class="label" font-size="16px" letter-spacing="1" fill="#0a1424">MJR FINANCIAL COVERAGE</text>
+<rect x="66" y="54" width="310" height="44" rx="22" fill="{accent}"/>
+<text x="84" y="82" class="label" font-size="15px" letter-spacing=".5" fill="#0a1424">MJR FINANCIAL COVERAGE</text>
 <rect x="66" y="127" width="86" height="8" rx="4" fill="{accent}"/>
 {title}
 <rect x="66" y="388" width="135" height="58" rx="13" fill="{accent}"/>
