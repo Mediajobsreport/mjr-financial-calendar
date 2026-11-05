@@ -1,0 +1,133 @@
+{
+  "updated_utc": "2026-11-05T14:24:03+00:00",
+  "companies": [
+    {
+      "name": "iHeartMedia",
+      "ticker": "IHRT",
+      "sector": "Radio",
+      "investor_url": "https://investors.iheartmedia.com/"
+    },
+    {
+      "name": "Cumulus Media",
+      "ticker": "CMLS",
+      "sector": "Radio",
+      "investor_url": "https://investors.cumulusmedia.com/"
+    },
+    {
+      "name": "Nexstar Media Group",
+      "ticker": "NXST",
+      "sector": "Television",
+      "investor_url": "https://www.nexstar.tv/investor-relations/"
+    },
+    {
+      "name": "Gray Media",
+      "ticker": "GTN",
+      "sector": "Television",
+      "investor_url": "https://graymedia.com/investors/"
+    },
+    {
+      "name": "Sinclair",
+      "ticker": "SBGI",
+      "sector": "Television",
+      "investor_url": "https://sbgi.net/investors/"
+    },
+    {
+      "name": "The Walt Disney Company",
+      "ticker": "DIS",
+      "sector": "Entertainment",
+      "investor_url": "https://thewaltdisneycompany.com/investor-relations/"
+    },
+    {
+      "name": "Comcast",
+      "ticker": "CMCSA",
+      "sector": "Entertainment",
+      "investor_url": "https://www.cmcsa.com/"
+    },
+    {
+      "name": "Netflix",
+      "ticker": "NFLX",
+      "sector": "Streaming",
+      "investor_url": "https://ir.netflix.net/"
+    },
+    {
+      "name": "Spotify",
+      "ticker": "SPOT",
+      "sector": "Audio",
+      "investor_url": "https://investors.spotify.com/"
+    },
+    {
+      "name": "Gannett",
+      "ticker": "GCI",
+      "sector": "Publishing",
+      "investor_url": "https://investors.gannett.com/"
+    },
+    {
+      "name": "The New York Times Company",
+      "ticker": "NYT",
+      "sector": "Publishing",
+      "investor_url": "https://investors.nytco.com/"
+    },
+    {
+      "name": "Fox Corporation",
+      "ticker": "FOXA",
+      "sector": "Television",
+      "investor_url": "https://investor.foxcorporation.com/"
+    }
+  ],
+  "events": [
+    {
+      "company": "Nexstar Media Group",
+      "title": "Third Quarter 2026 Financial Results Conference Call",
+      "date": "2026-11-05",
+      "time": "10:00 AM",
+      "timezone": "ET",
+      "event_type": "Earnings call",
+      "fiscal_period": "Q3 2026",
+      "status": "confirmed",
+      "source_url": "https://www.nexstar.tv/nexstar-media-group-to-report-2026-third-quarter-financial-results-host-conference-call-and-webcast-on-november-5/",
+      "webcast_url": "https://www.nexstar.tv/nexstar-media-group-2026-third-quarter-financial-results-webcast-november-5/",
+      "report_url": "https://www.nexstar.tv/category/financial-releases/",
+      "verified_at": "2026-11-05"
+    },
+    {
+      "company": "Gray Media",
+      "title": "Third Quarter 2026 Earnings Release and Conference Call",
+      "date": "2026-11-06",
+      "time": "11:00 AM",
+      "timezone": "ET",
+      "event_type": "Earnings call",
+      "fiscal_period": "Q3 2026",
+      "status": "confirmed",
+      "source_url": "https://graymedia.com/investor-relations/investor-calls/news/gray-media-s-3rd-quarter-2026-earnings-call---november-6th-11-00am-et/",
+      "webcast_url": "https://graymedia.com/investor-relations/events/",
+      "report_url": "https://graymedia.com/investor-relations/financial-reports/",
+      "verified_at": "2026-11-05"
+    },
+    {
+      "company": "iHeartMedia",
+      "title": "Third Quarter 2026 Financial Results",
+      "date": "2026-11-09",
+      "event_type": "Earnings release",
+      "fiscal_period": "Q3 2026",
+      "status": "confirmed",
+      "source_url": "https://investors.iheartmedia.com/news/9711/",
+      "webcast_url": "https://investors.iheartmedia.com/events-and-presentations/",
+      "report_url": "https://investors.iheartmedia.com/financials/quarterly-results/default.aspx",
+      "verified_at": "2026-11-05"
+    },
+    {
+      "company": "The Walt Disney Company",
+      "title": "Fiscal Full Year and Fourth Quarter 2026 Earnings Webcast",
+      "date": "2026-11-17",
+      "time": "8:30 AM",
+      "timezone": "ET",
+      "event_type": "Earnings webcast",
+      "fiscal_period": "Q4 and FY 2026",
+      "status": "confirmed",
+      "source_url": "https://investors.thewaltdisneycompany.com/news/news-details/2026/The-Walt-Disney-Company-Executives-to-Discuss-Fiscal-Full-Year-and-Fourth-Quarter-2026-Financial-Results-via-Webcast/default.aspx",
+      "webcast_url": "https://investor.thewaltdisneycompany.com/events-and-presentations/event-details/2026/Disneys-Q4-FY26-Earnings-Results-Webcast-2026-r7J4pl6coY/default.aspx",
+      "report_url": "https://investors.thewaltdisneycompany.com/financials/quarterly-results/default.aspx",
+      "verified_at": "2026-11-05"
+    }
+  ]
+}
