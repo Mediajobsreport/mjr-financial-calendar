@@ -41,6 +41,7 @@ jobs:
                 }
               );
               core.info(`Cancelled stale Pages deployment (HTTP ${response.status}).`);
+              await new Promise(resolve => setTimeout(resolve, 30000));
             } catch (error) {
               if (error.status === 404) {
                 core.info("The stale Pages deployment is already cleared.");
