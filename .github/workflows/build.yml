@@ -19,6 +19,10 @@ jobs:
         with:
           python-version: '3.12'
       - run: python scripts/build.py
+      - name: Publish verified upcoming earnings notices
+        run: python scripts/publish.py
+        env:
+          BD_API_KEY: ${{ secrets.BD_API_KEY }}
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: 'Refresh financial calendar data'
+          commit_message: 'Refresh calendar and publish verified earnings notices'
