@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="640" viewBox="0 0 1200 640" role="img" aria-labelledby="title desc">
+<title id="title">CuriosityStream (CURI) — MJR Financial Coverage</title>
+<desc id="desc">A reusable 1200 by 640 editorial graphic for CuriosityStream company news and financial reports.</desc>
+<defs>
+  <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#0d182b"/><stop offset="1" stop-color="#172238"/></linearGradient>
+  <radialGradient id="glow"><stop offset="0" stop-color="#35B6C8" stop-opacity=".26"/><stop offset="1" stop-color="#35B6C8" stop-opacity="0"/></radialGradient>
+  <style>.title{font-family:Arial,Helvetica,sans-serif;font-weight:700;letter-spacing:-2px;fill:#fafcff}.label{font-family:Arial,Helvetica,sans-serif;font-weight:700}</style>
+</defs>
+<rect width="1200" height="640" fill="url(#bg)"/>
+<ellipse cx="960" cy="260" rx="390" ry="350" fill="url(#glow)"/>
+<path d="M770 0h430v640h-170z" fill="#fff" opacity=".025"/>
+<path d="M1040 0h160v640h-25z" fill="#35B6C8" opacity=".075"/>
+<g stroke="#35B6C8" stroke-width="7" fill="none" opacity=".55"><rect x="820" y="155" width="300" height="205" rx="28"/><path d="M930 205l95 53-95 54z" fill="#35B6C8" stroke="none" opacity=".7"/><rect x="1048" y="205" width="32" height="105" rx="9" fill="#35B6C8" stroke="none" opacity=".55"/></g>
+<text x="1160" y="530" text-anchor="end" class="label" font-size="150px" fill="#fff" opacity=".07">CURI</text>
+<rect x="66" y="54" width="252" height="44" rx="22" fill="#35B6C8"/>
+<text x="88" y="82" class="label" font-size="16px" letter-spacing="1" fill="#0a1424">MJR FINANCIAL COVERAGE</text>
+<rect x="66" y="127" width="86" height="8" rx="4" fill="#35B6C8"/>
+<text x="68" y="250" class="title" font-size="70px">CuriosityStream</text>
+<rect x="66" y="388" width="135" height="58" rx="13" fill="#35B6C8"/>
+<text x="133.5" y="426" text-anchor="middle" class="label" font-size="28px" fill="#091424">CURI</text>
+<text x="66" y="486" class="label" font-size="19px" letter-spacing="1.4" fill="#d8e1ee">TELEVISION &amp; STREAMING</text>
+<path d="M66 564H1134" stroke="#fff" stroke-opacity=".18" stroke-width="2"/>
+<text x="66" y="600" font-family="Arial,Helvetica,sans-serif" font-size="17px" letter-spacing=".4" fill="#c1cddd">EARNINGS  •  INVESTOR CALLS  •  COMPANY NEWS</text>
+<text x="1134" y="600" text-anchor="end" class="label" font-size="14px" fill="#96a4b8">1200 × 640</text>
+</svg>

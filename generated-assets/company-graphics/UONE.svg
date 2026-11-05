@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="640" viewBox="0 0 1200 640" role="img" aria-labelledby="title desc">
+<title id="title">Urban One (UONE) — MJR Financial Coverage</title>
+<desc id="desc">A reusable 1200 by 640 editorial graphic for Urban One company news and financial reports.</desc>
+<defs>
+  <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#0d182b"/><stop offset="1" stop-color="#172238"/></linearGradient>
+  <radialGradient id="glow"><stop offset="0" stop-color="#D7B55C" stop-opacity=".26"/><stop offset="1" stop-color="#D7B55C" stop-opacity="0"/></radialGradient>
+  <style>.title{font-family:Arial,Helvetica,sans-serif;font-weight:700;letter-spacing:-2px;fill:#fafcff}.label{font-family:Arial,Helvetica,sans-serif;font-weight:700}</style>
+</defs>
+<rect width="1200" height="640" fill="url(#bg)"/>
+<ellipse cx="960" cy="260" rx="390" ry="350" fill="url(#glow)"/>
+<path d="M770 0h430v640h-170z" fill="#fff" opacity=".025"/>
+<path d="M1040 0h160v640h-25z" fill="#D7B55C" opacity=".075"/>
+<g fill="none" stroke="#D7B55C" stroke-width="8" opacity=".58"><path d="M855 290a110 110 0 0 1 220 0"/><path d="M815 290a150 150 0 0 1 300 0"/><path d="M775 290a190 190 0 0 1 380 0"/></g><circle cx="965" cy="290" r="14" fill="#D7B55C" opacity=".8"/>
+<text x="1160" y="530" text-anchor="end" class="label" font-size="150px" fill="#fff" opacity=".07">UONE</text>
+<rect x="66" y="54" width="252" height="44" rx="22" fill="#D7B55C"/>
+<text x="88" y="82" class="label" font-size="16px" letter-spacing="1" fill="#0a1424">MJR FINANCIAL COVERAGE</text>
+<rect x="66" y="127" width="86" height="8" rx="4" fill="#D7B55C"/>
+<text x="68" y="250" class="title" font-size="70px">Urban One</text>
+<rect x="66" y="388" width="135" height="58" rx="13" fill="#D7B55C"/>
+<text x="133.5" y="426" text-anchor="middle" class="label" font-size="28px" fill="#091424">UONE</text>
+<text x="66" y="486" class="label" font-size="19px" letter-spacing="1.4" fill="#d8e1ee">BROADCAST &amp; LOCAL MEDIA</text>
+<path d="M66 564H1134" stroke="#fff" stroke-opacity=".18" stroke-width="2"/>
+<text x="66" y="600" font-family="Arial,Helvetica,sans-serif" font-size="17px" letter-spacing=".4" fill="#c1cddd">EARNINGS  •  INVESTOR CALLS  •  COMPANY NEWS</text>
+<text x="1134" y="600" text-anchor="end" class="label" font-size="14px" fill="#96a4b8">1200 × 640</text>
+</svg>
