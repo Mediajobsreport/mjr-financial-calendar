@@ -1,21 +1,17 @@
 #!/usr/bin/env python3
-"""Generate reusable 1200x640 company-specific MJR finance story graphics."""
+"""Generate editorial 1200x640 SVG graphics for the MJR financial company directory."""
 from __future__ import annotations
 
+import html
 import json
-import math
+import re
 from pathlib import Path
-from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parents[1]
 COMPANIES_PATH = ROOT / "data" / "companies.json"
 OUTPUT_DIR = ROOT / "generated-assets" / "company-graphics"
 WIDTH, HEIGHT = 1200, 640
-FONT_BOLD = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
-FONT_REGULAR = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
 
-# Editorial accent colors chosen to make each card recognizable at a glance.
-# These graphics use company names and tickers, not recreated corporate logos.
 ACCENTS = {
     "AMCX": "#E45D45", "BBGI": "#00A5D9", "CMCSA": "#1676D2",
     "CURI": "#35B6C8", "DJCO": "#C9A96E", "DIS": "#6A78D1",
@@ -38,153 +34,96 @@ SECTOR_LABELS = {
     "Music & Audio": "MUSIC & AUDIO",
 }
 
-def font(path: str, size: int) -> ImageFont.FreeTypeFont:
-    return ImageFont.truetype(path, size=size)
+def esc(value: object) -> str:
+    return html.escape(str(value), quote=True)
 
-def wrap_to_width(draw: ImageDraw.ImageDraw, text: str, max_width: int, face) -> list[str]:
+def wrap_name(name: str, max_chars: int = 25) -> list[str]:
+    words = name.split()
     lines: list[str] = []
     current = ""
-    for word in text.split():
+    for word in words:
         candidate = f"{current} {word}".strip()
-        if current and draw.textbbox((0, 0), candidate, font=face)[2] > max_width:
+        if current and len(candidate) > max_chars:
             lines.append(current)
             current = word
         else:
             current = candidate
     if current:
         lines.append(current)
-    return lines
+    return lines[:2] or [name]
 
-def draw_gradient(img: Image.Image, accent: tuple[int, int, int]) -> None:
-    draw = ImageDraw.Draw(img)
-    left = (13, 24, 43)
-    right = (23, 34, 56)
-    for x in range(WIDTH):
-        t = x / (WIDTH - 1)
-        r = int(left[0] * (1-t) + right[0] * t)
-        g = int(left[1] * (1-t) + right[1] * t)
-        b = int(left[2] * (1-t) + right[2] * t)
-        draw.line((x, 0, x, HEIGHT), fill=(r, g, b))
-    glow = Image.new("RGBA", img.size, (0, 0, 0, 0))
-    gd = ImageDraw.Draw(glow)
-    cx, cy = 1000, 270
-    for radius in range(440, 40, -8):
-        alpha = int(2 + 17 * (1 - radius / 440))
-        gd.ellipse((cx-radius, cy-radius, cx+radius, cy+radius),
-                   fill=(*accent, alpha))
-    img.alpha_composite(glow)
-
-def draw_motif(draw: ImageDraw.ImageDraw, sector: str, accent: tuple[int, int, int]) -> None:
-    color = (*accent, 150)
+def motif(sector: str, accent: str) -> str:
     if sector == "Broadcast & Local":
-        for radius in (90, 155, 220):
-            draw.arc((875-radius, 115-radius, 875+radius, 115+radius),
-                     210, 330, fill=color, width=5)
-        draw.ellipse((864, 104, 886, 126), fill=(*accent, 210))
-    elif sector == "Music & Audio":
-        heights = [48, 86, 132, 74, 164, 112, 58, 126, 92, 42, 108]
-        x0 = 840
-        for i, h in enumerate(heights):
-            x = x0 + i * 23
-            draw.rounded_rectangle((x, 275-h//2, x+10, 275+h//2),
-                                   radius=5, fill=(*accent, 115))
-    elif sector == "News & Publishing":
-        for i, w in enumerate((300, 245, 285, 205)):
-            y = 176 + i*44
-            draw.rounded_rectangle((830, y, 830+w, y+8), radius=4,
-                                   fill=(*accent, 120))
-        draw.rounded_rectangle((830, 144, 865, 158), radius=5,
-                               fill=(*accent, 170))
-    else:
-        draw.rounded_rectangle((845, 135, 1105, 315), radius=26,
-                               outline=(*accent, 145), width=5)
-        draw.polygon(((950, 185), (950, 265), (1020, 225)),
-                     fill=(*accent, 175))
-        draw.rounded_rectangle((1040, 184, 1075, 267), radius=8,
-                               fill=(*accent, 110))
+        return f'<g fill="none" stroke="{accent}" stroke-width="8" opacity=".58"><path d="M855 290a110 110 0 0 1 220 0"/><path d="M815 290a150 150 0 0 1 300 0"/><path d="M775 290a190 190 0 0 1 380 0"/></g><circle cx="965" cy="290" r="14" fill="{accent}" opacity=".8"/>'
+    if sector == "Music & Audio":
+        heights = [55, 95, 142, 78, 172, 118, 64, 134, 98, 48, 112]
+        bars = []
+        for i, height in enumerate(heights):
+            x = 810 + i * 28
+            bars.append(f'<rect x="{x}" y="{280-height/2:.0f}" width="12" height="{height}" rx="6" fill="{accent}" opacity=".5"/>')
+        return "".join(bars)
+    if sector == "News & Publishing":
+        return f'<g fill="{accent}" opacity=".45"><rect x="820" y="165" width="42" height="22" rx="6"/><rect x="820" y="210" width="315" height="10" rx="5"/><rect x="820" y="245" width="270" height="10" rx="5"/><rect x="820" y="280" width="300" height="10" rx="5"/><rect x="820" y="315" width="220" height="10" rx="5"/></g>'
+    return f'<g stroke="{accent}" stroke-width="7" fill="none" opacity=".55"><rect x="820" y="155" width="300" height="205" rx="28"/><path d="M930 205l95 53-95 54z" fill="{accent}" stroke="none" opacity=".7"/><rect x="1048" y="205" width="32" height="105" rx="9" fill="{accent}" stroke="none" opacity=".55"/></g>'
 
 def render(company: dict) -> Path:
     ticker = str(company["ticker"]).strip().upper()
     name = str(company["name"]).strip()
     sector = str(company.get("sector", "TV & Streaming")).strip()
-    hex_color = ACCENTS.get(ticker, "#62A4DC").lstrip("#")
-    accent = tuple(int(hex_color[i:i+2], 16) for i in (0, 2, 4))
-
-    img = Image.new("RGBA", (WIDTH, HEIGHT), (13, 24, 43, 255))
-    draw_gradient(img, accent)
-    draw = ImageDraw.Draw(img, "RGBA")
-
-    # Layered bands add movement while leaving a quiet text-safe area.
-    draw.polygon(((770, 0), (1200, 0), (1200, 640), (1030, 640)),
-                 fill=(255, 255, 255, 8))
-    draw.polygon(((1040, 0), (1200, 0), (1200, 640), (1175, 640)),
-                 fill=(*accent, 24))
-    draw_motif(draw, sector, accent)
-
-    # Oversized ticker creates a distinct, reusable watermark for this company.
-    ticker_face = font(FONT_BOLD, 158)
-    ticker_box = draw.textbbox((0, 0), ticker, font=ticker_face)
-    ticker_width = ticker_box[2] - ticker_box[0]
-    ticker_x = max(760, WIDTH - ticker_width - 72)
-    draw.text((ticker_x, 424), ticker, font=ticker_face,
-              fill=(255, 255, 255, 28), stroke_width=1,
-              stroke_fill=(*accent, 42))
-
-    # Small editorial label and accent rule.
-    draw.rounded_rectangle((66, 54, 310, 96), radius=21,
-                           fill=(*accent, 255))
-    draw.text((88, 65), "MJR FINANCIAL COVERAGE", font=font(FONT_BOLD, 16),
-              fill=(10, 20, 36, 255))
-    draw.rounded_rectangle((66, 127, 151, 135), radius=4,
-                           fill=(*accent, 255))
-
-    # Company name, sized and wrapped to fit the left half cleanly.
-    max_text_width = 725
-    name_size = 72
-    while name_size > 48:
-        name_face = font(FONT_BOLD, name_size)
-        lines = wrap_to_width(draw, name, max_text_width, name_face)
-        if len(lines) <= 2:
-            break
-        name_size -= 2
-    line_height = name_size + 15
-    name_y = 183
-    for line in lines:
-        draw.text((66, name_y), line, font=name_face, fill=(250, 252, 255, 255))
-        name_y += line_height
-
-    # Ticker badge and sector line.
-    badge_y = name_y + 21
-    ticker_face_small = font(FONT_BOLD, 28)
-    ticker_box = draw.textbbox((0, 0), ticker, font=ticker_face_small)
-    badge_w = ticker_box[2] + 54
-    draw.rounded_rectangle((66, badge_y, 66+badge_w, badge_y+58), radius=13,
-                           fill=(*accent, 255))
-    draw.text((92, badge_y+11), ticker, font=ticker_face_small,
-              fill=(9, 20, 36, 255))
-    draw.text((66, badge_y+83), SECTOR_LABELS.get(sector, sector.upper()),
-              font=font(FONT_BOLD, 19), fill=(216, 225, 238, 255))
-
-    # Footer keeps the illustration reusable for different quarters and story types.
-    draw.line((66, 564, 1134, 564), fill=(255, 255, 255, 48), width=2)
-    draw.text((66, 585), "EARNINGS  •  INVESTOR CALLS  •  COMPANY NEWS",
-              font=font(FONT_REGULAR, 17), fill=(193, 205, 221, 255))
-    draw.text((1018, 583), "1200 × 640", font=font(FONT_BOLD, 14),
-              fill=(150, 164, 184, 220))
-
+    accent = ACCENTS.get(ticker, "#62A4DC")
+    lines = wrap_name(name)
+    title_size = 70 if len(lines[0]) <= 19 else 58
+    title_y = 250 if len(lines) == 1 else 215
+    title = "".join(
+        f'<text x="68" y="{title_y + i * (title_size + 14)}" class="title" font-size="{title_size}px">{esc(line)}</text>'
+        for i, line in enumerate(lines)
+    )
+    sector_label = SECTOR_LABELS.get(sector, sector.upper())
+    graphic = f'''<svg xmlns="http://www.w3.org/2000/svg" width="{WIDTH}" height="{HEIGHT}" viewBox="0 0 {WIDTH} {HEIGHT}" role="img" aria-labelledby="title desc">
+<title id="title">{esc(name)} ({esc(ticker)}) — MJR Financial Coverage</title>
+<desc id="desc">A reusable 1200 by 640 editorial graphic for {esc(name)} company news and financial reports.</desc>
+<defs>
+  <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#0d182b"/><stop offset="1" stop-color="#172238"/></linearGradient>
+  <radialGradient id="glow"><stop offset="0" stop-color="{accent}" stop-opacity=".26"/><stop offset="1" stop-color="{accent}" stop-opacity="0"/></radialGradient>
+  <style>.title{{font-family:Arial,Helvetica,sans-serif;font-weight:700;letter-spacing:-2px;fill:#fafcff}}.label{{font-family:Arial,Helvetica,sans-serif;font-weight:700}}</style>
+</defs>
+<rect width="1200" height="640" fill="url(#bg)"/>
+<ellipse cx="960" cy="260" rx="390" ry="350" fill="url(#glow)"/>
+<path d="M770 0h430v640h-170z" fill="#fff" opacity=".025"/>
+<path d="M1040 0h160v640h-25z" fill="{accent}" opacity=".075"/>
+{motif(sector, accent)}
+<text x="1160" y="530" text-anchor="end" class="label" font-size="150px" fill="#fff" opacity=".07">{esc(ticker)}</text>
+<rect x="66" y="54" width="252" height="44" rx="22" fill="{accent}"/>
+<text x="88" y="82" class="label" font-size="16px" letter-spacing="1" fill="#0a1424">MJR FINANCIAL COVERAGE</text>
+<rect x="66" y="127" width="86" height="8" rx="4" fill="{accent}"/>
+{title}
+<rect x="66" y="388" width="135" height="58" rx="13" fill="{accent}"/>
+<text x="133.5" y="426" text-anchor="middle" class="label" font-size="28px" fill="#091424">{esc(ticker)}</text>
+<text x="66" y="486" class="label" font-size="19px" letter-spacing="1.4" fill="#d8e1ee">{esc(sector_label)}</text>
+<path d="M66 564H1134" stroke="#fff" stroke-opacity=".18" stroke-width="2"/>
+<text x="66" y="600" font-family="Arial,Helvetica,sans-serif" font-size="17px" letter-spacing=".4" fill="#c1cddd">EARNINGS  •  INVESTOR CALLS  •  COMPANY NEWS</text>
+<text x="1134" y="600" text-anchor="end" class="label" font-size="14px" fill="#96a4b8">1200 × 640</text>
+</svg>
+'''
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-    target = OUTPUT_DIR / f"{ticker}.webp"
-    img.convert("RGB").save(target, "WEBP", quality=93, method=6)
+    target = OUTPUT_DIR / f"{ticker}.svg"
+    target.write_text(graphic, encoding="utf-8")
     return target
 
 def main() -> None:
     companies = json.loads(COMPANIES_PATH.read_text(encoding="utf-8"))
     if not companies:
         raise SystemExit("No companies found in data/companies.json")
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    expected = set()
     for company in companies:
         path = render(company)
+        expected.add(path.name)
         print(f"Generated {path.relative_to(ROOT)}")
-    print(f"Generated {len(companies)} company graphics.")
+    for stale in OUTPUT_DIR.glob("*.svg"):
+        if stale.name not in expected:
+            stale.unlink()
+    print(f"Generated {len(companies)} company graphics ({WIDTH}x{HEIGHT}).")
 
 if __name__ == "__main__":
     main()
