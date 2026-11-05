@@ -47,7 +47,7 @@ LOGO_URLS = {
     "IHRT": "https://companieslogo.com/img/orig/IHRT_BIG-8cdd2bdc.png?t=1688833504",
     "LEE": "https://assets.quadcitiesbusiness.com/2024/07/Lee-logo.jpg",
     "LION": "https://cinema39.com/cdn/shop/collections/lionsgate-studios28120.logowik.com.webp?v=1761699112",
-    "MDIA": "https://mms.businesswire.com/media/20260120561943/en/2696793/22/MEDIACO_LOGO_2026.jpg",
+    "MDIA": "https://companieslogo.com/img/orig/MDIA_BIG-fc8899f4.png?download=true&t=1757619760",
     "NFLX": "https://www.citypng.com/public/uploads/preview/-11594682142fapt8mnyud.png",
     "NYT": "https://upload.wikimedia.org/wikipedia/commons/0/0e/The_New_York_Times_Company_Logo.svg",
     "NWSA": "https://cdn.prod.website-files.com/68de9c28ee29c8b50967ec08/6911f26a5fe85964d2966596_News_Corp_%282013%E2%80%93present%29-Logo.wine-p-1080.png",
