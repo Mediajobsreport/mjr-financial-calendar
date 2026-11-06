@@ -10,6 +10,7 @@ import sys
 import urllib.error
 import urllib.parse
 import urllib.request
+import re
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
