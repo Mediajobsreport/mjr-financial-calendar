@@ -53,7 +53,7 @@ def request_update(post_id: int, title: str, caption: str, content: str, graphic
         API_URL,
         data=urllib.parse.urlencode(payload).encode("utf-8"),
         headers={"X-Api-Key": api_key, "Content-Type": "application/x-www-form-urlencoded"},
-        method="POST",
+        method="PUT",
     )
     try:
         with urllib.request.urlopen(request, timeout=35) as response:
