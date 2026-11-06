@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Publish concise, verified earnings-calendar notices to MJR News Articles."""
+"""Create review drafts for confirmed quarterly and major financial announcements."""
 from __future__ import annotations
 
 import datetime as dt
@@ -53,15 +53,46 @@ def company_graphic_url(event: dict) -> str:
     key = "".join(ch for ch in str(event.get("company", "")).casefold() if ch.isalnum())
     ticker = event_ticker or by_name.get(key)
     if ticker:
-        return COMPANY_GRAPHICS_BASE + "/" + urllib.parse.quote(ticker) + ".svg"
-    return MJR_LOGO
+        return COMPANY_GRAPHICS_BASE + "/" + urllib.parse.quote(ticker) + ".png"
+    return ""
+
+
+def period_label(event: dict) -> str:
+    value = str(event.get("fiscal_period", "financial")).strip()
+    match = re.search(r"Q([1-4])\s*(?:and\s*FY\s*)?(20\d{2})", value, re.I)
+    if match:
+        quarter = {"1": "First-Quarter", "2": "Second-Quarter", "3": "Third-Quarter", "4": "Fourth-Quarter"}[match.group(1)]
+        if "FY" in value.upper():
+            return f"{quarter} and Full-Year {match.group(2)}"
+        return f"{quarter} {match.group(2)}"
+    match = re.search(r"20\d{2}", value)
+    if re.search(r"FY|full year|annual", value, re.I):
+        return f"Full-Year {match.group(0)}" if match else "Full-Year"
+    return value
+
+
+def event_headline(event: dict) -> str:
+    name = "Disney" if event["company"] == "The Walt Disney Company" else event["company"]
+    period = period_label(event)
+    date = dt.date.fromisoformat(event["date"]).strftime("%b %-d")
+    kind = str(event.get("event_type", "")).casefold()
+    if "webcast" in kind:
+        return f"{name} to Host {period} Earnings Webcast {date}"
+    return f"{name} to Report {period} Results {date}"
+
+
+def qualifies_for_draft(event: dict) -> bool:
+    period = str(event.get("fiscal_period", "")).casefold()
+    details = " ".join((str(event.get("event_type", "")), str(event.get("title", "")))).casefold()
+    quarterly_or_annual = bool(re.search(r"\bq[1-4]\b|quarter|fiscal year|full year|annual", period))
+    earnings_related = "earning" in details or "financial result" in details
+    return bool(event.get("major_announcement")) or (quarterly_or_annual and earnings_related)
 
 
 def event_content(event: dict) -> str:
     company = html.escape(event["company"])
-    title = html.escape(event["title"])
     date = dt.date.fromisoformat(event["date"]).strftime("%B %-d, %Y")
-    fiscal_period = html.escape(event.get("fiscal_period", "earnings"))
+    fiscal_period = html.escape(period_label(event))
     timing = ""
     if event.get("time") and event.get("timezone"):
         timing = f" at {html.escape(event['time'])} {html.escape(event['timezone'])}"
@@ -75,16 +106,19 @@ def event_content(event: dict) -> str:
         f'<a href="{html.escape(url, quote=True)}" rel="noopener">{html.escape(label)}</a>'
         for label, url in links
     )
+    event_kind = html.escape(event.get("event_type", "earnings event"))
+    headline = html.escape(event_headline(event))
     return (
-        f"<p>{company} is scheduled to report {fiscal_period} on {date}{timing}.</p>"
-        f"<p>{title}</p><p>{link_html}</p>"
+        f"<p>{company} is scheduled to report {fiscal_period} results on {date}{timing}. "
+        f"The {event_kind} is part of the company’s quarterly or annual financial reporting.</p>"
+        f"<p>{headline}</p><p>{link_html}</p>"
         '<p>See the <a href="https://www.mediajobsreport.com/financial-calendar" '
-        'rel="noopener">MJR Financial Calendar</a> for additional media-company reporting dates.</p>'
+        'rel="noopener">MJR Financial Calendar</a> for other confirmed media-company reporting dates.</p>'
     )
 
 
 def publish(event: dict, api_key: str) -> int:
-    title = event["title"].strip()
+    title = event_headline(event)
     period = event.get("fiscal_period", "earnings")
     time_note = f" at {event['time']} {event.get('timezone', '')}".rstrip() if event.get("time") else ""
     caption = (
@@ -98,7 +132,7 @@ def publish(event: dict, api_key: str) -> int:
         "post_title": title,
         "post_caption": caption,
         "post_content": event_content(event),
-        "post_status": "1",
+        "post_status": "0",
         "post_image": company_graphic_url(event),
         "auto_image_import": "1",
         "post_org_url": event["source_url"],
@@ -144,9 +178,12 @@ def main() -> int:
     events = read_json(EVENTS_PATH, [])
     eligible = []
     for event in events:
-        if event.get("status") != "confirmed" or not event.get("source_url"):
+        if event.get("status") != "confirmed" or not event.get("source_url") or not qualifies_for_draft(event):
             continue
         if not valid_https(event.get("source_url")) or event["source_url"] in published_sources:
+            continue
+        if not company_graphic_url(event):
+            print(f"No company graphic is available for {event.get('company')}; skipping draft.")
             continue
         try:
             report_date = dt.date.fromisoformat(event["date"])
@@ -170,11 +207,11 @@ def main() -> int:
             "published_at": now.isoformat(timespec="seconds"),
         })
         published_sources.add(event["source_url"])
-        print(f"Published verified calendar notice for {event['company']} (post {post_id}).")
+        print(f"Created approval draft for {event['company']} (post {post_id}).")
 
     STATE_PATH.write_text(json.dumps({"published": published}, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     if not eligible:
-        print("No new confirmed earnings events within the 14-day publishing window.")
+        print("No new qualifying quarterly or major announcements within the 14-day draft window.")
     return 0
 
 
