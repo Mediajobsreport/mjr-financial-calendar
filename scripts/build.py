@@ -1,12 +1,14 @@
 import datetime as dt
 import json
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 ROOT = Path(__file__).resolve().parents[1]
 companies = json.loads((ROOT / "data/companies.json").read_text(encoding="utf-8"))
 source_events = json.loads((ROOT / "data/events.json").read_text(encoding="utf-8"))
 company_names = {company["name"] for company in companies}
 events = []
+today = dt.datetime.now(ZoneInfo("America/New_York")).date()
 
 for event in source_events:
     required = ("company", "title", "date", "source_url", "verified_at")
@@ -15,9 +17,11 @@ for event in source_events:
     if event.get("status") != "confirmed" or event["company"] not in company_names:
         continue
     try:
-        dt.date.fromisoformat(event["date"])
+        event_date = dt.date.fromisoformat(event["date"])
         dt.date.fromisoformat(event["verified_at"])
     except ValueError:
+        continue
+    if event_date < today:
         continue
     if not event["source_url"].startswith("https://"):
         continue
