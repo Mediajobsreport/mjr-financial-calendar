@@ -68,6 +68,39 @@ def request_update(post_id: int, title: str, caption: str, content: str, graphic
         raise RuntimeError(f"BD API did not confirm the draft update for post {post_id}.")
 
 
+def request_create(title: str, caption: str, content: str, graphic_url: str, source_url: str, api_key: str) -> int:
+    payload = {
+        "user_id": AUTHOR_ID,
+        "data_id": NEWS_ARTICLE_ID,
+        "data_type": SINGLE_IMAGE_DATA_TYPE,
+        "post_title": title[:180],
+        "post_caption": caption,
+        "post_content": content,
+        "post_status": "0",
+        "post_image": graphic_url,
+        "auto_image_import": "1",
+        "post_org_url": source_url,
+    }
+    request = urllib.request.Request(
+        "https://www.mediajobsreport.com/api/v2/data_posts/create",
+        data=urllib.parse.urlencode(payload).encode("utf-8"),
+        headers={"X-Api-Key": api_key, "Content-Type": "application/x-www-form-urlencoded"},
+        method="POST",
+    )
+    try:
+        with urllib.request.urlopen(request, timeout=35) as response:
+            result = json.loads(response.read().decode("utf-8"))
+    except urllib.error.HTTPError as exc:
+        body = exc.read().decode("utf-8", errors="replace")[:800]
+        raise RuntimeError(f"BD API returned HTTP {exc.code} while creating replacement draft: {body}") from None
+    except urllib.error.URLError as exc:
+        raise RuntimeError(f"BD API connection failed while creating replacement draft: {exc.reason}") from None
+    message = result.get("message", {})
+    if result.get("status") != "success" or not isinstance(message, dict) or not message.get("post_id"):
+        raise RuntimeError("BD API did not confirm replacement draft creation.")
+    return int(message["post_id"])
+
+
 def result_content(record, title, release_date):
     company = html.escape(record["company"])
     release_url = html.escape(record["release_url"], quote=True)
@@ -94,6 +127,8 @@ def main():
         raise SystemExit("BD_API_KEY is missing; no existing stories were changed.")
     migrated = read_json(MIGRATED_STATE, {"post_ids": []})
     done = set(int(value) for value in migrated.get("post_ids", []))
+    replacement_ids = migrated.get("replacement_post_ids", {})
+    failures = []
     event_records = read_json(EVENTS_STATE, {"published": []}).get("published", [])
     result_records = read_json(RESULTS_STATE, {"published": []}).get("published", [])
     events_by_source = {
@@ -116,10 +151,26 @@ def main():
             caption = title
             content = "<p>Financial announcement. Source details should be reviewed before approval.</p>"
             image = ""
-        request_update(post_id, title, caption, content, image, api_key)
+        try:
+            request_update(post_id, title, caption, content, image, api_key)
+        except RuntimeError as exc:
+            if "data_posts record not found" in str(exc):
+                try:
+                    replacement_id = request_create(
+                        title, caption, content, image, record.get("source_url", ""), api_key
+                    )
+                except RuntimeError as create_exc:
+                    failures.append(f"announcement {post_id}: {create_exc}")
+                    continue
+                replacement_ids[str(post_id)] = replacement_id
+                print(f"Original announcement {post_id} was missing; created review draft {replacement_id}.")
+            else:
+                failures.append(f"announcement {post_id}: {exc}")
+                continue
         done.add(post_id)
-        write_state({"post_ids": sorted(done)})
-        print(f"Moved existing financial announcement {post_id} to draft.")
+        write_state({"post_ids": sorted(done), "replacement_post_ids": replacement_ids})
+        if str(post_id) not in replacement_ids:
+            print(f"Moved existing financial announcement {post_id} to draft.")
 
     for record in result_records:
         post_id = int(record.get("post_id", 0))
@@ -139,11 +190,31 @@ def main():
         caption = f"{record.get('company', 'Media company')} reports {publish_results.result_period(lines)} financial results."
         image = publish_results.company_graphic_url(record.get("ticker", ""))
         content = result_content(record, title, release_date or "recently")
-        request_update(post_id, title, caption, content, image, api_key)
+        try:
+            request_update(post_id, title, caption, content, image, api_key)
+        except RuntimeError as exc:
+            if "data_posts record not found" in str(exc):
+                try:
+                    replacement_id = request_create(
+                        title, caption, content, image, record.get("release_url", ""), api_key
+                    )
+                except RuntimeError as create_exc:
+                    failures.append(f"results story {post_id}: {create_exc}")
+                    continue
+                replacement_ids[str(post_id)] = replacement_id
+                print(f"Original results story {post_id} was missing; created review draft {replacement_id}.")
+            else:
+                failures.append(f"results story {post_id}: {exc}")
+                continue
         done.add(post_id)
-        write_state({"post_ids": sorted(done)})
-        print(f"Moved existing financial results story {post_id} to draft.")
+        write_state({"post_ids": sorted(done), "replacement_post_ids": replacement_ids})
+        if str(post_id) not in replacement_ids:
+            print(f"Moved existing financial results story {post_id} to draft.")
 
+    if failures:
+        print(f"{len(failures)} financial posts could not be prepared and will be retried on the next run:", file=sys.stderr)
+        for failure in failures:
+            print(f"  {failure}", file=sys.stderr)
     print(f"Prepared {len(done)} existing financial posts as review drafts.")
 
 
