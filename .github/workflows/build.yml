@@ -18,9 +18,25 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - run: python -m pip install cairosvg
       - run: python scripts/generate_company_graphics.py
       - run: python scripts/build.py
-      # Financial stories stay manual until an editor approves the headline and company graphic.
+      - name: Wait for company graphics to publish
+        run: python scripts/wait_for_graphics.py
+      - name: Convert prior financial posts to review drafts
+        run: python scripts/draft_existing.py
+        env:
+          BD_API_KEY: ${{ secrets.BD_API_KEY }}
+          SEC_USER_AGENT: 'Media Jobs Report financial coverage jerry@mediajobsreport.com'
+      - name: Draft upcoming earnings announcements
+        run: python scripts/publish.py
+        env:
+          BD_API_KEY: ${{ secrets.BD_API_KEY }}
+      - name: Draft newly filed earnings results
+        run: python scripts/publish_results.py
+        env:
+          BD_API_KEY: ${{ secrets.BD_API_KEY }}
+          SEC_USER_AGENT: 'Media Jobs Report financial coverage jerry@mediajobsreport.com'
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: 'Refresh financial calendar data'
+          commit_message: 'Refresh calendar and save financial drafts'
