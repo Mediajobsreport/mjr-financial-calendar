@@ -20,15 +20,7 @@ jobs:
           python-version: '3.12'
       - run: python scripts/generate_company_graphics.py
       - run: python scripts/build.py
-      - name: Publish verified upcoming earnings notices
-        run: python scripts/publish.py
-        env:
-          BD_API_KEY: ${{ secrets.BD_API_KEY }}
-      - name: Publish newly filed earnings results
-        run: python scripts/publish_results.py
-        env:
-          BD_API_KEY: ${{ secrets.BD_API_KEY }}
-          SEC_USER_AGENT: 'Media Jobs Report financial coverage jerry@mediajobsreport.com'
+      # Financial stories stay manual until an editor approves the headline and company graphic.
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: 'Refresh calendar and publish verified earnings notices'
+          commit_message: 'Refresh financial calendar data'
