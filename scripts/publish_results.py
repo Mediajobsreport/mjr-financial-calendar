@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Publish short results notices when tracked companies file earnings releases with the SEC."""
+"""Create review drafts for verified quarterly and annual financial results."""
 from __future__ import annotations
 
 import datetime as dt
@@ -123,23 +123,46 @@ def is_results_release(lines: list[str]) -> bool:
     return has_results_term and not is_future_notice
 
 
+def result_period(lines: list[str]) -> str:
+    sample = " ".join(lines[:180])
+    match = re.search(r"\b(first|second|third|fourth|1st|2nd|3rd|4th)\s+quarter(?:\s+of)?\s+(20\d{2})\b", sample, re.I)
+    if match:
+        word = match.group(1).lower()
+        quarter = {"first":"First-Quarter","second":"Second-Quarter","third":"Third-Quarter","fourth":"Fourth-Quarter",
+                   "1st":"First-Quarter","2nd":"Second-Quarter","3rd":"Third-Quarter","4th":"Fourth-Quarter"}[word]
+        return f"{quarter} {match.group(2)}"
+    match = re.search(r"\bQ([1-4])\s*(20\d{2})\b", sample, re.I)
+    if match:
+        quarter = {"1":"First-Quarter","2":"Second-Quarter","3":"Third-Quarter","4":"Fourth-Quarter"}[match.group(1)]
+        return f"{quarter} {match.group(2)}"
+    match = re.search(r"(?:fiscal|full)\s+year\s+(20\d{2})", sample, re.I)
+    if match:
+        return f"Full-Year {match.group(1)}"
+    return "Quarterly"
+
+
 def release_headline(lines: list[str], company_name: str) -> str:
-    marker = next((i for i, line in enumerate(lines) if "earnings release" in line.casefold() or "financial results" in line.casefold()), -1)
-    search_lines = lines[marker + 1:marker + 14] if marker >= 0 else lines[:50]
-    candidates = [
-        line for line in search_lines
-        if 15 <= len(line) <= 180
-        and re.search(r"\b(report|reports|reported|results|announces|announced|revenue|earnings)\b", line, re.I)
-        and not re.search(r"forward-looking|investor contact|media contact|financial statements|table of contents", line, re.I)
-    ]
-    if candidates:
-        return candidates[0]
-    return f"{company_name} Reports Financial Results"
+    generic = re.compile(r"press release issued|date of report|date of earliest event|financial results$|earnings release$", re.I)
+    candidates = []
+    for line in lines[:180]:
+        candidate = re.sub(r"\s+", " ", line).strip(" •-–—")
+        if not 24 <= len(candidate) <= 180 or generic.search(candidate):
+            continue
+        if re.search(r"\b(reports?|reported|results?|revenue|earnings|profit|income|ebitda)\b", candidate, re.I):
+            candidates.append(candidate)
+    company_key = re.sub(r"[^a-z0-9]", "", company_name.casefold())
+    for candidate in candidates:
+        candidate_key = re.sub(r"[^a-z0-9]", "", candidate.casefold())
+        if company_key and company_key in candidate_key:
+            headline = candidate.title() if candidate.isupper() else candidate
+            headline = re.sub(r"\bQ([1-4])\b", lambda m: m.group(0).upper(), headline, flags=re.I)
+            return headline[:180]
+    return f"{company_name} Reports {result_period(lines)} Results"
 
 
 def company_graphic_url(ticker: str) -> str:
     if ticker:
-        return COMPANY_GRAPHICS_BASE + "/" + urllib.parse.quote(ticker.upper()) + ".svg"
+        return COMPANY_GRAPHICS_BASE + "/" + urllib.parse.quote(ticker.upper()) + ".png"
     return MJR_LOGO
 
 
@@ -170,7 +193,7 @@ def post_result(result: dict, api_key: str) -> int:
         "post_title": result["headline"][:180],
         "post_caption": caption,
         "post_content": content,
-        "post_status": "1",
+        "post_status": "0",
         "post_image": company_graphic_url(result["ticker"]),
         "auto_image_import": "1",
         "post_org_url": result["release_url"],
@@ -279,7 +302,7 @@ def main() -> int:
 
     results.sort(key=lambda item: (item["filing_date"], item["company"]))
     if not results:
-        print("No new SEC earnings-result filings found in the three-day window.")
+        print("No new quarterly or annual earnings-result filings found in the three-day window.")
         return 0
 
     for result in results:
@@ -297,7 +320,7 @@ def main() -> int:
             json.dumps({"published": published}, indent=2, ensure_ascii=False) + "\n",
             encoding="utf-8",
         )
-        print(f"Published results story for {result['ticker']} ({result['accession']}, post {post_id}).")
+        print(f"Created results approval draft for {result['ticker']} ({result['accession']}, post {post_id}).")
 
     return 0
 
