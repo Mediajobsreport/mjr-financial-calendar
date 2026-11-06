@@ -2,6 +2,7 @@
 """Generate editorial 1200x640 SVG graphics for the MJR financial company directory."""
 from __future__ import annotations
 
+import cairosvg
 import base64
 import html
 import json
@@ -208,6 +209,13 @@ def render(company: dict) -> Path:
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     target = OUTPUT_DIR / f"{ticker}.svg"
     target.write_text(graphic, encoding="utf-8")
+    png_target = OUTPUT_DIR / f"{ticker}.png"
+    cairosvg.svg2png(
+        bytestring=graphic.encode("utf-8"),
+        write_to=str(png_target),
+        output_width=WIDTH,
+        output_height=HEIGHT,
+    )
     return target
 
 def main() -> None:
@@ -223,7 +231,11 @@ def main() -> None:
     for stale in OUTPUT_DIR.glob("*.svg"):
         if stale.name not in expected:
             stale.unlink()
-    print(f"Generated {len(companies)} company graphics ({WIDTH}x{HEIGHT}).")
+    expected_png = {Path(name).with_suffix(".png").name for name in expected}
+    for stale in OUTPUT_DIR.glob("*.png"):
+        if stale.name not in expected_png:
+            stale.unlink()
+    print(f"Generated {len(companies)} company graphics ({WIDTH}x{HEIGHT}) in SVG and PNG formats.")
 
 if __name__ == "__main__":
     main()
