@@ -103,6 +103,22 @@
       "release_url": "https://www.sec.gov/Archives/edgar/data/2052959/000205295926000079/lion-20261105.htm",
       "post_id": 5378,
       "published_at": "2026-11-06T01:44:51-05:00"
+    },
+    {
+      "accession": "0000832428-26-000041",
+      "company": "E.W. Scripps",
+      "ticker": "SSP",
+      "release_url": "https://www.sec.gov/Archives/edgar/data/832428/000083242826000041/ssp-20261105.htm",
+      "post_id": 5379,
+      "published_at": "2026-11-06T09:06:05-05:00"
+    },
+    {
+      "accession": "0001437749-26-035398",
+      "company": "Gray Media",
+      "ticker": "GTN",
+      "release_url": "https://www.sec.gov/Archives/edgar/data/43196/000143774926035398/gtn20261104_8k.htm",
+      "post_id": 5380,
+      "published_at": "2026-11-06T09:06:06-05:00"
     }
   ]
 }

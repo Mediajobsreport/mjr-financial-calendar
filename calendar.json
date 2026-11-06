@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-11-05T19:56:12+00:00",
+  "updated_utc": "2026-11-06T14:05:56+00:00",
   "companies": [
     {
       "name": "AMC Networks",
@@ -354,20 +354,6 @@
     }
   ],
   "events": [
-    {
-      "company": "Nexstar Media Group",
-      "title": "Third Quarter 2026 Financial Results Conference Call",
-      "date": "2026-11-05",
-      "time": "10:00 AM",
-      "timezone": "ET",
-      "event_type": "Earnings call",
-      "fiscal_period": "Q3 2026",
-      "status": "confirmed",
-      "source_url": "https://www.nexstar.tv/nexstar-media-group-to-report-2026-third-quarter-financial-results-host-conference-call-and-webcast-on-november-5/",
-      "webcast_url": "https://www.nexstar.tv/nexstar-media-group-2026-third-quarter-financial-results-webcast-november-5/",
-      "report_url": "https://www.nexstar.tv/category/financial-releases/",
-      "verified_at": "2026-11-05"
-    },
     {
       "company": "Gray Media",
       "title": "Third Quarter 2026 Earnings Release and Conference Call",
