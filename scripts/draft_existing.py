@@ -53,13 +53,14 @@ def request_update(post_id: int, title: str, caption: str, content: str, graphic
         API_URL,
         data=urllib.parse.urlencode(payload).encode("utf-8"),
         headers={"X-Api-Key": api_key, "Content-Type": "application/x-www-form-urlencoded"},
-        method="PUT",
+        method="POST",
     )
     try:
         with urllib.request.urlopen(request, timeout=35) as response:
             result = json.loads(response.read().decode("utf-8"))
     except urllib.error.HTTPError as exc:
-        raise RuntimeError(f"BD API returned HTTP {exc.code} while saving post {post_id}.") from None
+        body = exc.read().decode("utf-8", errors="replace")[:800]
+        raise RuntimeError(f"BD API returned HTTP {exc.code} while saving post {post_id}: {body}") from None
     except urllib.error.URLError as exc:
         raise RuntimeError(f"BD API connection failed while saving post {post_id}: {exc.reason}") from None
     message = result.get("message", {})
