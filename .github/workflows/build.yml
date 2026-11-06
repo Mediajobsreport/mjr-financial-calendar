@@ -24,7 +24,6 @@ jobs:
       - name: Wait for company graphics to publish
         run: python scripts/wait_for_graphics.py
       - name: Convert prior financial posts to review drafts
-        continue-on-error: true
         run: python scripts/draft_existing.py
         env:
           BD_API_KEY: ${{ secrets.BD_API_KEY }}
