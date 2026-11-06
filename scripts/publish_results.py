@@ -1,40 +1,31 @@
 #!/usr/bin/env python3
-"""Create review drafts for verified quarterly and annual financial results."""
+"""Create review drafts only from verified issuer releases and material developments.
+
+SEC filings are not story sources. Editors add a verified entry to
+data/verified-releases.json after locating the issuer's actual release.
+"""
 from __future__ import annotations
 
 import datetime as dt
 import html
 import json
 import os
-import re
 import sys
-import time
 import urllib.error
 import urllib.parse
 import urllib.request
-from html.parser import HTMLParser
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
 ROOT = Path(__file__).resolve().parents[1]
-STATE_PATH = ROOT / "data" / "published-results.json"
-COMPANIES_PATH = ROOT / "data" / "companies.json"
+RELEASES_PATH = ROOT / "data" / "verified-releases.json"
+STATE_PATH = ROOT / "data" / "drafted-releases.json"
 COMPANY_GRAPHICS_BASE = "https://mediajobsreport.github.io/mjr-financial-calendar/generated-assets/company-graphics"
 ET = ZoneInfo("America/New_York")
 API_URL = "https://www.mediajobsreport.com/api/v2/data_posts/create"
-MJR_LOGO = "https://www.mediajobsreport.com/images/Social-Profile-Pic-2-Media-Jobs-Report-Social-Media-Icon.png"
 AUTHOR_ID = "110"
 NEWS_ARTICLE_ID = "15"
 SINGLE_IMAGE_DATA_TYPE = "20"
-SEC_TICKERS_URL = "https://www.sec.gov/files/company_tickers.json"
-SEC_USER_AGENT = os.environ.get(
-    "SEC_USER_AGENT",
-    "Media Jobs Report financial coverage jerry@mediajobsreport.com",
-)
-SEC_ARCHIVES = "https://www.sec.gov/Archives/edgar/data"
-SEC_SUBMISSIONS = "https://data.sec.gov/submissions/CIK"
-LOOKBACK_DAYS = 3
-BLOCK_TAGS = {"address", "article", "br", "div", "h1", "h2", "h3", "h4", "li", "p", "section", "table", "tr"}
 
 
 def read_json(path: Path, default):
@@ -43,160 +34,82 @@ def read_json(path: Path, default):
     return json.loads(path.read_text(encoding="utf-8"))
 
 
-class VisibleText(HTMLParser):
-    def __init__(self):
-        super().__init__(convert_charrefs=True)
-        self.parts = []
-        self.hidden = 0
-
-    def handle_starttag(self, tag, attrs):
-        if tag in {"script", "style"}:
-            self.hidden += 1
-        elif not self.hidden and tag in BLOCK_TAGS:
-            self.parts.append("\n")
-
-    def handle_endtag(self, tag):
-        if tag in {"script", "style"} and self.hidden:
-            self.hidden -= 1
-        elif not self.hidden and tag in BLOCK_TAGS:
-            self.parts.append("\n")
-
-    def handle_data(self, data):
-        if not self.hidden:
-            self.parts.append(data)
+def write_json(path: Path, value):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(value, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
 
-def html_lines(source: str) -> list[str]:
-    parser = VisibleText()
-    parser.feed(source)
-    text = html.unescape("".join(parser.parts))
-    return [re.sub(r"\s+", " ", line).strip() for line in text.splitlines() if line.strip()]
-
-
-def request_bytes(url: str, sec: bool = True) -> bytes:
-    headers = {"User-Agent": SEC_USER_AGENT} if sec else {}
-    headers["Accept"] = "application/json, text/html, */*"
-    request = urllib.request.Request(url, headers=headers)
-    with urllib.request.urlopen(request, timeout=35) as response:
-        return response.read()
-
-
-def request_json(url: str):
-    return json.loads(request_bytes(url).decode("utf-8"))
-
-
-def archive_base(cik: int, accession: str) -> str:
-    accession_path = accession.replace("-", "")
-    return f"{SEC_ARCHIVES}/{cik}/{accession_path}"
-
-
-def exhibit_url(cik: int, accession: str, primary_document: str) -> str:
-    base = archive_base(cik, accession)
-    try:
-        index = request_json(base + "/index.json").get("directory", {}).get("item", [])
-    except (urllib.error.URLError, urllib.error.HTTPError, json.JSONDecodeError, TimeoutError):
-        index = []
-
-    exhibits = [item for item in index if str(item.get("type", "")).upper().startswith("EX-99")]
-    exhibits.sort(key=lambda item: (
-        0 if str(item.get("type", "")).upper() in {"EX-99.1", "EX-99.01"} else 1,
-        0 if "press release" in str(item.get("description", "")).casefold() else 1,
-        str(item.get("name", "")),
-    ))
-    if exhibits:
-        name = exhibits[0].get("name") or exhibits[0].get("href")
-        if name:
-            return base + "/" + urllib.parse.quote(str(name))
-    return base + "/" + urllib.parse.quote(primary_document)
-
-
-def filing_text(url: str) -> tuple[str, list[str]]:
-    raw = request_bytes(url)
-    source = raw.decode("utf-8", errors="replace")
-    return source, html_lines(source)
-
-
-def is_results_release(lines: list[str]) -> bool:
-    sample = " ".join(lines[:180]).casefold()
-    has_results_term = bool(re.search(r"financial results|earnings results|quarterly results|results for the (three|six|nine|twelve|first|second|third|fourth|fiscal|quarter|year)|reports? (its )?(financial|quarterly|fiscal|third|fourth|first|second)", sample))
-    is_future_notice = bool(re.search(r"to report (its )?(financial|quarterly|fiscal)|will report (its )?(financial|quarterly|fiscal)", sample))
-    return has_results_term and not is_future_notice
-
-
-def result_period(lines: list[str]) -> str:
-    sample = " ".join(lines[:180])
-    match = re.search(r"\b(first|second|third|fourth|1st|2nd|3rd|4th)\s+quarter(?:\s+of)?\s+(20\d{2})\b", sample, re.I)
-    if match:
-        word = match.group(1).lower()
-        quarter = {"first":"First-Quarter","second":"Second-Quarter","third":"Third-Quarter","fourth":"Fourth-Quarter",
-                   "1st":"First-Quarter","2nd":"Second-Quarter","3rd":"Third-Quarter","4th":"Fourth-Quarter"}[word]
-        return f"{quarter} {match.group(2)}"
-    match = re.search(r"\bQ([1-4])\s*(20\d{2})\b", sample, re.I)
-    if match:
-        quarter = {"1":"First-Quarter","2":"Second-Quarter","3":"Third-Quarter","4":"Fourth-Quarter"}[match.group(1)]
-        return f"{quarter} {match.group(2)}"
-    match = re.search(r"(?:fiscal|full)\s+year\s+(20\d{2})", sample, re.I)
-    if match:
-        return f"Full-Year {match.group(1)}"
-    return "Quarterly"
-
-
-def release_headline(lines: list[str], company_name: str) -> str:
-    generic = re.compile(r"press release issued|date of report|date of earliest event|financial results$|earnings release$", re.I)
-    candidates = []
-    for line in lines[:180]:
-        candidate = re.sub(r"\s+", " ", line).strip(" •-–—")
-        if not 24 <= len(candidate) <= 180 or generic.search(candidate):
-            continue
-        if re.search(r"\b(reports?|reported|results?|revenue|earnings|profit|income|ebitda)\b", candidate, re.I):
-            candidates.append(candidate)
-    company_key = re.sub(r"[^a-z0-9]", "", company_name.casefold())
-    for candidate in candidates:
-        candidate_key = re.sub(r"[^a-z0-9]", "", candidate.casefold())
-        if company_key and company_key in candidate_key:
-            headline = candidate.title() if candidate.isupper() else candidate
-            headline = re.sub(r"\bQ([1-4])\b", lambda m: m.group(0).upper(), headline, flags=re.I)
-            return headline[:180]
-    return f"{company_name} Reports {result_period(lines)} Results"
-
-
-def company_graphic_url(ticker: str) -> str:
-    if ticker:
-        return COMPANY_GRAPHICS_BASE + "/" + urllib.parse.quote(ticker.upper()) + ".png"
-    return MJR_LOGO
-
-
-def post_result(result: dict, api_key: str) -> int:
-    company = html.escape(result["company"])
-    title = html.escape(result["headline"])
-    filing_date = dt.date.fromisoformat(result["filing_date"]).strftime("%B %-d, %Y")
-    release_link = html.escape(result["release_url"], quote=True)
-    filing_link = html.escape(result["filing_url"], quote=True)
-    caption = (
-        f"{result['company']} reported financial results in a filing dated "
-        f"{dt.date.fromisoformat(result['filing_date']).strftime('%b %-d, %Y')}. "
-        "Read the official release and SEC filing for the complete results."
+def valid_release_url(url: str) -> bool:
+    parsed = urllib.parse.urlparse(url)
+    host = (parsed.hostname or "").lower()
+    return (
+        parsed.scheme == "https"
+        and bool(host)
+        and host not in {"sec.gov", "www.sec.gov", "edgar.sec.gov"}
+        and not host.endswith(".sec.gov")
+        and "/edgar/" not in parsed.path.casefold()
     )
-    content = (
-        f"<p>{company} reported financial results on {filing_date}. "
-        "The headline reflects the company’s release; the complete results and financial detail "
-        "are available in the official linked materials.</p>"
-        f'<p><a href="{release_link}" rel="noopener">Company earnings release</a>'
-        f' &nbsp;|&nbsp; <a href="{filing_link}" rel="noopener">SEC filing</a></p>'
+
+
+def validate(record: dict) -> list[str]:
+    errors = []
+    required = ("id", "company", "ticker", "story_type", "headline", "summary", "release_url", "release_date")
+    for key in required:
+        if not str(record.get(key, "")).strip():
+            errors.append(f"missing {key}")
+    if record.get("story_type") not in {"earnings_results", "major_development"}:
+        errors.append("story_type must be earnings_results or major_development")
+    if record.get("status") != "verified":
+        errors.append("status must be verified")
+    if record.get("release_url") and not valid_release_url(record["release_url"]):
+        errors.append("release_url must link directly to a non-SEC issuer release")
+    if record.get("highlights") is not None and not isinstance(record["highlights"], list):
+        errors.append("highlights must be a list")
+    if len(str(record.get("headline", ""))) > 180:
+        errors.append("headline exceeds 180 characters")
+    if len(str(record.get("summary", ""))) < 45:
+        errors.append("summary must provide substantive story context")
+    if not str(record.get("ticker", "")).strip():
+        errors.append("ticker is required for the company graphic")
+    return errors
+
+
+def graphic_url(ticker: str) -> str:
+    return COMPANY_GRAPHICS_BASE + "/" + urllib.parse.quote(ticker.upper()) + ".png"
+
+
+def story_content(record: dict) -> str:
+    company = html.escape(record["company"])
+    release_url = html.escape(record["release_url"], quote=True)
+    date = dt.date.fromisoformat(record["release_date"]).strftime("%B %-d, %Y")
+    summary = html.escape(record["summary"])
+    parts = [f"<p>{summary}</p>"]
+    highlights = [str(item).strip() for item in record.get("highlights", []) if str(item).strip()]
+    if highlights:
+        parts.append("<ul>" + "".join(f"<li>{html.escape(item)}</li>" for item in highlights) + "</ul>")
+    parts.append(
+        f'<p>{company} issued the release on {date}. '
+        f'<a href="{release_url}" rel="noopener">Read the full company press release</a>.</p>'
+    )
+    parts.append(
         '<p>See the <a href="https://www.mediajobsreport.com/financial-calendar" '
         'rel="noopener">MJR Financial Calendar</a> for upcoming reporting dates.</p>'
     )
+    return "".join(parts)
+
+
+def create_draft(record: dict, api_key: str) -> int:
     payload = {
         "user_id": AUTHOR_ID,
         "data_id": NEWS_ARTICLE_ID,
         "data_type": SINGLE_IMAGE_DATA_TYPE,
-        "post_title": result["headline"][:180],
-        "post_caption": caption,
-        "post_content": content,
+        "post_title": record["headline"][:180],
+        "post_caption": record["summary"],
+        "post_content": story_content(record),
         "post_status": "0",
-        "post_image": company_graphic_url(result["ticker"]),
+        "post_image": graphic_url(record["ticker"]),
         "auto_image_import": "1",
-        "post_org_url": result["release_url"],
+        "post_org_url": record["release_url"],
     }
     request = urllib.request.Request(
         API_URL,
@@ -206,122 +119,61 @@ def post_result(result: dict, api_key: str) -> int:
     )
     try:
         with urllib.request.urlopen(request, timeout=30) as response:
-            response_json = json.loads(response.read().decode("utf-8"))
+            result = json.loads(response.read().decode("utf-8"))
     except urllib.error.HTTPError as exc:
-        raise RuntimeError(f"BD API returned HTTP {exc.code}; results filing was not marked published.") from None
+        raise RuntimeError(f"BD API returned HTTP {exc.code}; verified release was not marked drafted.") from None
     except urllib.error.URLError as exc:
         raise RuntimeError(f"BD API connection failed: {exc.reason}") from None
-    message = response_json.get("message", {})
-    if response_json.get("status") != "success" or not isinstance(message, dict) or not message.get("post_id"):
-        raise RuntimeError("BD API did not confirm results-post creation; filing was not marked published.")
+    message = result.get("message", {})
+    if result.get("status") != "success" or not isinstance(message, dict) or not message.get("post_id"):
+        raise RuntimeError("BD API did not confirm draft creation; verified release was not marked drafted.")
     return int(message["post_id"])
 
 
 def main() -> int:
-    api_key = os.environ.get("BD_API_KEY", "").strip()
-    if not api_key:
-        print("BD_API_KEY is missing; no results posts were created.", file=sys.stderr)
-        return 1
+    releases = read_json(RELEASES_PATH, [])
+    if not isinstance(releases, list):
+        raise ValueError("data/verified-releases.json must contain a JSON list.")
 
-    today = dt.datetime.now(ET).date()
-    first_date = today - dt.timedelta(days=LOOKBACK_DAYS)
-    state = read_json(STATE_PATH, {"published": []})
-    published = state.get("published", [])
-    published_accessions = {item.get("accession") for item in published}
-
-    companies = read_json(COMPANIES_PATH, [])
-    try:
-        ticker_data = request_json(SEC_TICKERS_URL)
-    except (urllib.error.URLError, urllib.error.HTTPError, json.JSONDecodeError, TimeoutError) as exc:
-        raise RuntimeError(f"Could not load SEC ticker map: {exc}") from None
-    cik_by_ticker = {
-        str(item.get("ticker", "")).upper(): int(item["cik_str"])
-        for item in ticker_data.values()
-        if item.get("ticker") and item.get("cik_str")
-    }
-
-    results = []
-    for company in companies:
-        ticker = str(company.get("ticker", "")).upper()
-        cik = cik_by_ticker.get(ticker)
-        if not cik:
-            print(f"SEC ticker map has no CIK for {ticker}; skipping.")
+    state = read_json(STATE_PATH, {"drafted": []})
+    drafted = state.get("drafted", [])
+    drafted_ids = {str(item.get("id")) for item in drafted}
+    eligible = []
+    for record in releases:
+        if not isinstance(record, dict):
+            print("Skipping invalid release record: expected an object.", file=sys.stderr)
             continue
-        try:
-            submissions = request_json(f"{SEC_SUBMISSIONS}{cik:010d}.json")
-        except (urllib.error.URLError, urllib.error.HTTPError, json.JSONDecodeError, TimeoutError) as exc:
-            print(f"Could not read SEC submissions for {ticker}: {exc}", file=sys.stderr)
-            time.sleep(0.12)
+        errors = validate(record)
+        if errors:
+            print(f"Skipping {record.get('id', '(no id)')}: {', '.join(errors)}", file=sys.stderr)
             continue
+        if str(record["id"]) in drafted_ids:
+            continue
+        eligible.append(record)
 
-        recent = submissions.get("filings", {}).get("recent", {})
-        forms = recent.get("form", [])
-        for i, form in enumerate(forms):
-            if form not in {"8-K", "6-K"}:
-                continue
-            accession = recent.get("accessionNumber", [""])[i]
-            if not accession or accession in published_accessions:
-                continue
-            try:
-                filed = dt.date.fromisoformat(recent.get("filingDate", [""])[i])
-            except (IndexError, ValueError):
-                continue
-            if filed < first_date or filed > today:
-                continue
-            items = str(recent.get("items", [""] * len(forms))[i] or "")
-            if form == "8-K" and "2.02" not in items:
-                continue
-            primary = recent.get("primaryDocument", [""])[i]
-            if not primary:
-                continue
-
-            release_url = exhibit_url(cik, accession, primary)
-            filing_url = f"{SEC_ARCHIVES}/{cik}/{accession.replace('-', '')}/{accession}-index.htm"
-            try:
-                source, lines = filing_text(release_url)
-            except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError):
-                continue
-            if form == "6-K" and not is_results_release(lines):
-                continue
-            if not lines:
-                continue
-
-            results.append({
-                "company": company["name"],
-                "ticker": ticker,
-                "headline": release_headline(lines, company["name"]),
-                "filing_date": filed.isoformat(),
-                "form": form,
-                "accession": accession,
-                "release_url": release_url,
-                "filing_url": filing_url,
-            })
-            time.sleep(0.12)
-
-        time.sleep(0.12)
-
-    results.sort(key=lambda item: (item["filing_date"], item["company"]))
-    if not results:
-        print("No new quarterly or annual earnings-result filings found in the three-day window.")
+    if not eligible:
+        print("No new verified issuer releases or major developments to draft. SEC filings alone create no stories.")
         return 0
 
-    for result in results:
-        post_id = post_result(result, api_key)
-        published.append({
-            "accession": result["accession"],
-            "company": result["company"],
-            "ticker": result["ticker"],
-            "release_url": result["release_url"],
-            "post_id": post_id,
-            "published_at": dt.datetime.now(ET).isoformat(timespec="seconds"),
-        })
-        published_accessions.add(result["accession"])
-        STATE_PATH.write_text(
-            json.dumps({"published": published}, indent=2, ensure_ascii=False) + "\n",
-            encoding="utf-8",
-        )
-        print(f"Created results approval draft for {result['ticker']} ({result['accession']}, post {post_id}).")
+    api_key = os.environ.get("BD_API_KEY", "").strip()
+    if not api_key:
+        print("BD_API_KEY is missing; no drafts were created.", file=sys.stderr)
+        return 1
 
+    for record in eligible:
+        post_id = create_draft(record, api_key)
+        drafted.append({
+            "id": str(record["id"]),
+            "company": record["company"],
+            "ticker": record["ticker"],
+            "story_type": record["story_type"],
+            "release_url": record["release_url"],
+            "post_id": post_id,
+            "drafted_at": dt.datetime.now(ET).isoformat(timespec="seconds"),
+        })
+        drafted_ids.add(str(record["id"]))
+        write_json(STATE_PATH, {"drafted": drafted})
+        print(f"Created unpublished {record['story_type']} draft for {record['ticker']} (post {post_id}).")
     return 0
 
 
