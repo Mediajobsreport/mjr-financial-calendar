@@ -87,6 +87,22 @@
       "release_url": "https://www.sec.gov/Archives/edgar/data/1579684/000157968426000056/tday-20261105.htm",
       "post_id": 5368,
       "published_at": "2026-11-05T15:50:50-05:00"
+    },
+    {
+      "accession": "0001193125-26-449765",
+      "company": "Entravision",
+      "ticker": "EVC",
+      "release_url": "https://www.sec.gov/Archives/edgar/data/1109116/000119312526449765/evc-20261103.htm",
+      "post_id": 5377,
+      "published_at": "2026-11-06T01:44:51-05:00"
+    },
+    {
+      "accession": "0002052959-26-000079",
+      "company": "Lionsgate Studios",
+      "ticker": "LION",
+      "release_url": "https://www.sec.gov/Archives/edgar/data/2052959/000205295926000079/lion-20261105.htm",
+      "post_id": 5378,
+      "published_at": "2026-11-06T01:44:51-05:00"
     }
   ]
 }
