@@ -32,11 +32,10 @@ jobs:
         run: python scripts/publish.py
         env:
           BD_API_KEY: ${{ secrets.BD_API_KEY }}
-      - name: Draft newly filed earnings results
+      - name: Draft verified results releases and material developments
         run: python scripts/publish_results.py
         env:
           BD_API_KEY: ${{ secrets.BD_API_KEY }}
-          SEC_USER_AGENT: 'Media Jobs Report financial coverage jerry@mediajobsreport.com'
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: 'Refresh calendar and save financial drafts'
