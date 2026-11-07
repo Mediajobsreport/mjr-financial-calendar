@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-11-06T14:05:56+00:00",
+  "updated_utc": "2026-11-07T05:57:52+00:00",
   "companies": [
     {
       "name": "AMC Networks",
@@ -354,20 +354,6 @@
     }
   ],
   "events": [
-    {
-      "company": "Gray Media",
-      "title": "Third Quarter 2026 Earnings Release and Conference Call",
-      "date": "2026-11-06",
-      "time": "11:00 AM",
-      "timezone": "ET",
-      "event_type": "Earnings call",
-      "fiscal_period": "Q3 2026",
-      "status": "confirmed",
-      "source_url": "https://graymedia.com/investor-relations/investor-calls/news/gray-media-s-3rd-quarter-2026-earnings-call---november-6th-11-00am-et/",
-      "webcast_url": "https://graymedia.com/investor-relations/events/",
-      "report_url": "https://graymedia.com/investor-relations/financial-reports/",
-      "verified_at": "2026-11-05"
-    },
     {
       "company": "iHeartMedia",
       "title": "Third Quarter 2026 Financial Results",
