@@ -6,7 +6,8 @@
     "description": "Global entertainment company producing and distributing television programming and streaming services.",
     "website_url": "https://www.amcnetworks.com/",
     "investor_url": "https://investors.amcnetworks.com/",
-    "quote_url": "https://www.tradingview.com/symbols/NASDAQ-AMCX/"
+    "quote_url": "https://www.tradingview.com/symbols/NASDAQ-AMCX/",
+    "market": "United States"
   },
   {
     "name": "Beasley Media Group",
@@ -15,7 +16,8 @@
     "description": "Owns and operates radio stations and digital audio properties across U.S. markets.",
     "website_url": "https://bbgi.com/",
     "investor_url": "https://bbgi.com/investors/",
-    "quote_url": "https://www.tradingview.com/symbols/NASDAQ-BBGI/"
+    "quote_url": "https://www.tradingview.com/symbols/NASDAQ-BBGI/",
+    "market": "United States"
   },
   {
     "name": "Comcast",
@@ -24,7 +26,8 @@
     "description": "Global media and technology company spanning broadband, film, television, and streaming.",
     "website_url": "https://corporate.comcast.com/",
     "investor_url": "https://www.cmcsa.com/",
-    "quote_url": "https://www.tradingview.com/symbols/NASDAQ-CMCSA/"
+    "quote_url": "https://www.tradingview.com/symbols/NASDAQ-CMCSA/",
+    "market": "United States"
   },
   {
     "name": "CuriosityStream",
@@ -33,7 +36,8 @@
     "description": "Subscription streaming and media company focused on factual entertainment and nonfiction programming.",
     "website_url": "https://curiositystream.com/",
     "investor_url": "https://investors.curiositystream.com/",
-    "quote_url": "https://www.tradingview.com/symbols/NASDAQ-CURI/"
+    "quote_url": "https://www.tradingview.com/symbols/NASDAQ-CURI/",
+    "market": "United States"
   },
   {
     "name": "Daily Journal",
@@ -42,7 +46,8 @@
     "description": "Publishes newspapers and operates digital news properties, alongside technology and investment activities.",
     "website_url": "https://www.dailyjournal.com/",
     "investor_url": "https://ir.dailyjournal.com/",
-    "quote_url": "https://www.tradingview.com/symbols/NASDAQ-DJCO/"
+    "quote_url": "https://www.tradingview.com/symbols/NASDAQ-DJCO/",
+    "market": "United States"
   },
   {
     "name": "The Walt Disney Company",
@@ -51,7 +56,8 @@
     "description": "Global entertainment company with film, television, streaming, theme parks, and consumer products businesses.",
     "website_url": "https://thewaltdisneycompany.com/",
     "investor_url": "https://thewaltdisneycompany.com/investor-relations/",
-    "quote_url": "https://www.tradingview.com/symbols/NYSE-DIS/"
+    "quote_url": "https://www.tradingview.com/symbols/NYSE-DIS/",
+    "market": "United States"
   },
   {
     "name": "E.W. Scripps",
@@ -60,7 +66,8 @@
     "description": "U.S. local television broadcaster and owner of national news and entertainment networks.",
     "website_url": "https://scripps.com/",
     "investor_url": "https://ir.scripps.com/investor-information/",
-    "quote_url": "https://www.tradingview.com/symbols/NASDAQ-SSP/"
+    "quote_url": "https://www.tradingview.com/symbols/NASDAQ-SSP/",
+    "market": "United States"
   },
   {
     "name": "Entravision",
@@ -69,7 +76,8 @@
     "description": "Media, advertising technology, and marketing services company with a focus on Hispanic audiences.",
     "website_url": "https://entravision.com/",
     "investor_url": "https://investor.entravision.com/",
-    "quote_url": "https://www.tradingview.com/symbols/NYSE-EVC/"
+    "quote_url": "https://www.tradingview.com/symbols/NYSE-EVC/",
+    "market": "United States"
   },
   {
     "name": "Fox Corporation",
@@ -78,7 +86,8 @@
     "description": "News, sports, and entertainment company operating broadcast, cable, and digital brands.",
     "website_url": "https://www.foxcorporation.com/",
     "investor_url": "https://investor.foxcorporation.com/",
-    "quote_url": "https://www.tradingview.com/symbols/NASDAQ-FOXA/"
+    "quote_url": "https://www.tradingview.com/symbols/NASDAQ-FOXA/",
+    "market": "United States"
   },
   {
     "name": "Fubo",
@@ -87,7 +96,8 @@
     "description": "Sports-focused live television streaming service and digital entertainment platform.",
     "website_url": "https://www.fubo.tv/",
     "investor_url": "https://ir.fubo.tv/overview/default.aspx",
-    "quote_url": "https://www.tradingview.com/symbols/NYSE-FUBO/"
+    "quote_url": "https://www.tradingview.com/symbols/NYSE-FUBO/",
+    "market": "United States"
   },
   {
     "name": "Graham Holdings",
@@ -96,7 +106,8 @@
     "description": "Diversified holding company with education, media, manufacturing, and other operating businesses.",
     "website_url": "https://www.ghco.com/",
     "investor_url": "https://www.ghco.com/investor-relations",
-    "quote_url": "https://www.tradingview.com/symbols/NYSE-GHC/"
+    "quote_url": "https://www.tradingview.com/symbols/NYSE-GHC/",
+    "market": "United States"
   },
   {
     "name": "Gray Media",
@@ -105,7 +116,8 @@
     "description": "Local television broadcaster with stations, digital services, and production operations.",
     "website_url": "https://graymedia.com/",
     "investor_url": "https://graymedia.com/investor-relations/",
-    "quote_url": "https://www.tradingview.com/symbols/NYSE-GTN/"
+    "quote_url": "https://www.tradingview.com/symbols/NYSE-GTN/",
+    "market": "United States"
   },
   {
     "name": "iHeartMedia",
@@ -114,7 +126,8 @@
     "description": "Audio media company spanning broadcast radio, podcasts, digital audio, and live events.",
     "website_url": "https://www.iheartmedia.com/",
     "investor_url": "https://investors.iheartmedia.com/",
-    "quote_url": "https://www.tradingview.com/symbols/NASDAQ-IHRT/"
+    "quote_url": "https://www.tradingview.com/symbols/NASDAQ-IHRT/",
+    "market": "United States"
   },
   {
     "name": "Lee Enterprises",
@@ -123,7 +136,8 @@
     "description": "Local news publisher operating newspapers and digital news products across the United States.",
     "website_url": "https://www.lee.net/",
     "investor_url": "https://investors.lee.net/",
-    "quote_url": "https://www.tradingview.com/symbols/NASDAQ-LEE/"
+    "quote_url": "https://www.tradingview.com/symbols/NASDAQ-LEE/",
+    "market": "United States"
   },
   {
     "name": "Lionsgate Studios",
@@ -132,7 +146,8 @@
     "description": "Film and television studio producing, acquiring, and distributing entertainment content.",
     "website_url": "https://www.lionsgate.com/",
     "investor_url": "https://investors.lionsgate.com/",
-    "quote_url": "https://www.tradingview.com/symbols/NYSE-LION/"
+    "quote_url": "https://www.tradingview.com/symbols/NYSE-LION/",
+    "market": "United States"
   },
   {
     "name": "MediaCo",
@@ -141,7 +156,8 @@
     "description": "Multicultural media company with radio, digital, and outdoor advertising properties.",
     "website_url": "https://www.mediaco.holdings/",
     "investor_url": "https://corp.mediaco.now/investors",
-    "quote_url": "https://www.tradingview.com/symbols/NASDAQ-MDIA/"
+    "quote_url": "https://www.tradingview.com/symbols/NASDAQ-MDIA/",
+    "market": "United States"
   },
   {
     "name": "Netflix",
@@ -150,7 +166,8 @@
     "description": "Subscription entertainment service offering series, films, games, and live programming.",
     "website_url": "https://www.netflix.com/",
     "investor_url": "https://ir.netflix.net/",
-    "quote_url": "https://www.tradingview.com/symbols/NASDAQ-NFLX/"
+    "quote_url": "https://www.tradingview.com/symbols/NASDAQ-NFLX/",
+    "market": "United States"
   },
   {
     "name": "The New York Times Company",
@@ -159,7 +176,8 @@
     "description": "Global news and digital subscription company publishing The New York Times and other products.",
     "website_url": "https://www.nytco.com/",
     "investor_url": "https://www.nytco.com/investors/",
-    "quote_url": "https://www.tradingview.com/symbols/NYSE-NYT/"
+    "quote_url": "https://www.tradingview.com/symbols/NYSE-NYT/",
+    "market": "United States"
   },
   {
     "name": "News Corp",
@@ -168,7 +186,8 @@
     "description": "Global media company with news, information services, book publishing, and digital real estate operations.",
     "website_url": "https://newscorp.com/",
     "investor_url": "https://investors.newscorp.com/",
-    "quote_url": "https://www.tradingview.com/symbols/NASDAQ-NWSA/"
+    "quote_url": "https://www.tradingview.com/symbols/NASDAQ-NWSA/",
+    "market": "United States"
   },
   {
     "name": "Newsmax",
@@ -177,7 +196,8 @@
     "description": "News and information company operating television, digital, print, and related media properties.",
     "website_url": "https://www.newsmax.com/",
     "investor_url": "https://ir.newsmax.com/",
-    "quote_url": "https://www.tradingview.com/symbols/NYSE-NMAX/"
+    "quote_url": "https://www.tradingview.com/symbols/NYSE-NMAX/",
+    "market": "United States"
   },
   {
     "name": "Nexstar Media Group",
@@ -186,7 +206,8 @@
     "description": "Local television and digital media company, also owning national networks and The CW.",
     "website_url": "https://www.nexstar.tv/",
     "investor_url": "https://www.nexstar.tv/investor-relations/",
-    "quote_url": "https://www.tradingview.com/symbols/NASDAQ-NXST/"
+    "quote_url": "https://www.tradingview.com/symbols/NASDAQ-NXST/",
+    "market": "United States"
   },
   {
     "name": "Paramount Skydance",
@@ -195,7 +216,8 @@
     "description": "Global entertainment company combining film and television studios, broadcast networks, and streaming services.",
     "website_url": "https://www.paramount.com/",
     "investor_url": "https://ir.paramount.com/",
-    "quote_url": "https://www.tradingview.com/symbols/NYSE-SKYD/"
+    "quote_url": "https://www.tradingview.com/symbols/NYSE-SKYD/",
+    "market": "United States"
   },
   {
     "name": "People Inc.",
@@ -204,7 +226,8 @@
     "description": "Digital publishing company operating lifestyle, news, and service brands including People and Better Homes & Gardens.",
     "website_url": "https://people.inc/",
     "investor_url": "https://ir.people-incorporated.com/",
-    "quote_url": "https://www.tradingview.com/symbols/NASDAQ-PPLI/"
+    "quote_url": "https://www.tradingview.com/symbols/NASDAQ-PPLI/",
+    "market": "United States"
   },
   {
     "name": "Reservoir Media",
@@ -213,7 +236,8 @@
     "description": "Independent music company with recorded music, music publishing, and rights-management businesses.",
     "website_url": "https://www.reservoir-media.com/",
     "investor_url": "https://investors.reservoir-media.com/",
-    "quote_url": "https://www.tradingview.com/symbols/NASDAQ-RSVR/"
+    "quote_url": "https://www.tradingview.com/symbols/NASDAQ-RSVR/",
+    "market": "United States"
   },
   {
     "name": "Roku",
@@ -222,7 +246,8 @@
     "description": "Connected-TV platform and streaming company with devices, operating systems, advertising, and content.",
     "website_url": "https://www.roku.com/",
     "investor_url": "https://ir.roku.com/",
-    "quote_url": "https://stockanalysis.com/stocks/roku/"
+    "quote_url": "https://stockanalysis.com/stocks/roku/",
+    "market": "United States"
   },
   {
     "name": "Rumble",
@@ -231,7 +256,8 @@
     "description": "Video-sharing and cloud-services company serving creators, audiences, and publishers.",
     "website_url": "https://rumble.com/",
     "investor_url": "https://investors.rumble.com/",
-    "quote_url": "https://www.tradingview.com/symbols/NASDAQ-RUM/"
+    "quote_url": "https://www.tradingview.com/symbols/NASDAQ-RUM/",
+    "market": "United States"
   },
   {
     "name": "Saga Communications",
@@ -240,7 +266,8 @@
     "description": "U.S. radio broadcaster with stations and digital advertising services in local markets.",
     "website_url": "https://sagacom.com/",
     "investor_url": "https://sagacom.com/investors/",
-    "quote_url": "https://www.tradingview.com/symbols/NASDAQ-SGA/"
+    "quote_url": "https://www.tradingview.com/symbols/NASDAQ-SGA/",
+    "market": "United States"
   },
   {
     "name": "Sinclair",
@@ -249,7 +276,8 @@
     "description": "Television broadcaster and media company with local stations, networks, and digital operations.",
     "website_url": "https://sbgi.net/",
     "investor_url": "https://sbgi.net/investor-relations/",
-    "quote_url": "https://www.tradingview.com/symbols/NASDAQ-SBGI/"
+    "quote_url": "https://www.tradingview.com/symbols/NASDAQ-SBGI/",
+    "market": "United States"
   },
   {
     "name": "SiriusXM",
@@ -258,7 +286,8 @@
     "description": "Audio entertainment company providing satellite radio, streaming audio, and podcast services.",
     "website_url": "https://www.siriusxm.com/",
     "investor_url": "https://investor.siriusxm.com/",
-    "quote_url": "https://www.tradingview.com/symbols/NASDAQ-SIRI/"
+    "quote_url": "https://www.tradingview.com/symbols/NASDAQ-SIRI/",
+    "market": "United States"
   },
   {
     "name": "Sony Group",
@@ -267,7 +296,8 @@
     "description": "Global entertainment and technology company with music, film, television, gaming, and electronics businesses.",
     "website_url": "https://www.sony.com/",
     "investor_url": "https://www.sony.com/en/SonyInfo/IR/",
-    "quote_url": "https://www.tradingview.com/symbols/NYSE-SONY/"
+    "quote_url": "https://www.tradingview.com/symbols/NYSE-SONY/",
+    "market": "United States"
   },
   {
     "name": "Spotify",
@@ -276,7 +306,8 @@
     "description": "Audio streaming service offering music, podcasts, audiobooks, and creator tools.",
     "website_url": "https://www.spotify.com/",
     "investor_url": "https://investors.spotify.com/",
-    "quote_url": "https://www.tradingview.com/symbols/NYSE-SPOT/"
+    "quote_url": "https://www.tradingview.com/symbols/NYSE-SPOT/",
+    "market": "United States"
   },
   {
     "name": "Starz",
@@ -285,7 +316,8 @@
     "description": "Premium entertainment company offering scripted series, films, and a subscription streaming service.",
     "website_url": "https://www.starz.com/",
     "investor_url": "https://investors.starz.com/",
-    "quote_url": "https://www.tradingview.com/symbols/NASDAQ-STRZ/"
+    "quote_url": "https://www.tradingview.com/symbols/NASDAQ-STRZ/",
+    "market": "United States"
   },
   {
     "name": "Tencent Music Entertainment",
@@ -294,7 +326,8 @@
     "description": "China-based online music and audio entertainment platform operating streaming and social music services.",
     "website_url": "https://www.tencentmusic.com/",
     "investor_url": "https://ir.tencentmusic.com/",
-    "quote_url": "https://www.tradingview.com/symbols/NYSE-TME/"
+    "quote_url": "https://www.tradingview.com/symbols/NYSE-TME/",
+    "market": "United States"
   },
   {
     "name": "Townsquare Media",
@@ -303,7 +336,8 @@
     "description": "Local media company with radio stations, digital marketing services, and live events.",
     "website_url": "https://www.townsquaremedia.com/",
     "investor_url": "https://www.townsquaremedia.com/equity-investors",
-    "quote_url": "https://www.tradingview.com/symbols/NYSE-TSQ/"
+    "quote_url": "https://www.tradingview.com/symbols/NYSE-TSQ/",
+    "market": "United States"
   },
   {
     "name": "Urban One",
@@ -312,7 +346,8 @@
     "description": "Multimedia company focused on Black audiences, with radio, television, digital, and entertainment businesses.",
     "website_url": "https://urban1.com/",
     "investor_url": "https://urban1.com/investor-relations",
-    "quote_url": "https://www.tradingview.com/symbols/NASDAQ-UONE/"
+    "quote_url": "https://www.tradingview.com/symbols/NASDAQ-UONE/",
+    "market": "United States"
   },
   {
     "name": "USA TODAY Co.",
@@ -321,7 +356,8 @@
     "description": "News and media company with USA TODAY and a network of local news brands and digital products.",
     "website_url": "https://www.usatodayco.com/",
     "investor_url": "https://investors.usatodayco.com/",
-    "quote_url": "https://www.tradingview.com/symbols/NYSE-TDAY/"
+    "quote_url": "https://www.tradingview.com/symbols/NYSE-TDAY/",
+    "market": "United States"
   },
   {
     "name": "Warner Bros. Discovery",
@@ -330,7 +366,8 @@
     "description": "Global entertainment company with film and television studios, cable networks, and streaming services.",
     "website_url": "https://www.wbd.com/",
     "investor_url": "https://ir.wbd.com/",
-    "quote_url": "https://stockanalysis.com/stocks/wbd/"
+    "quote_url": "https://stockanalysis.com/stocks/wbd/",
+    "market": "United States"
   },
   {
     "name": "Warner Music Group",
@@ -339,7 +376,8 @@
     "description": "Global music company operating recorded music labels and music publishing businesses.",
     "website_url": "https://www.wmg.com/",
     "investor_url": "https://investors.wmg.com/",
-    "quote_url": "https://www.tradingview.com/symbols/NASDAQ-WMG/"
+    "quote_url": "https://www.tradingview.com/symbols/NASDAQ-WMG/",
+    "market": "United States"
   },
   {
     "name": "Paradium.AI",
@@ -348,7 +386,8 @@
     "description": "Publicly traded company included in MJR's news and publishing stock category.",
     "website_url": "https://paradium.ai/",
     "investor_url": "https://investors.paradium.ai/",
-    "quote_url": "https://www.tradingview.com/symbols/AMEX-PAAI/"
+    "quote_url": "https://www.tradingview.com/symbols/AMEX-PAAI/",
+    "market": "United States"
   },
   {
     "name": "Stingray Group",
@@ -360,7 +399,8 @@
     "quote_url": "https://www.tradingview.com/symbols/TSX-RAY/",
     "country": "Canada",
     "exchange": "TSX",
-    "currency": "CAD"
+    "currency": "CAD",
+    "market": "Canada"
   },
   {
     "name": "BCE / Bell Media",
@@ -372,7 +412,8 @@
     "quote_url": "https://www.tradingview.com/symbols/TSX-BCE/",
     "country": "Canada",
     "exchange": "TSX",
-    "currency": "CAD"
+    "currency": "CAD",
+    "market": "Canada"
   },
   {
     "name": "Rogers Communications",
@@ -384,7 +425,8 @@
     "quote_url": "https://www.tradingview.com/symbols/TSX-RCI.B/",
     "country": "Canada",
     "exchange": "TSX",
-    "currency": "CAD"
+    "currency": "CAD",
+    "market": "Canada"
   },
   {
     "name": "Corus Entertainment",
@@ -396,7 +438,8 @@
     "quote_url": "https://www.tradingview.com/symbols/TSX-CORS/",
     "country": "Canada",
     "exchange": "TSX",
-    "currency": "CAD"
+    "currency": "CAD",
+    "market": "Canada"
   },
   {
     "name": "Québecor",
@@ -408,7 +451,8 @@
     "quote_url": "https://www.tradingview.com/symbols/TSX-QBR.B/",
     "country": "Canada",
     "exchange": "TSX",
-    "currency": "CAD"
+    "currency": "CAD",
+    "market": "Canada"
   },
   {
     "name": "Cogeco Inc.",
@@ -420,6 +464,7 @@
     "quote_url": "https://www.tradingview.com/symbols/TSX-CGO/",
     "country": "Canada",
     "exchange": "TSX",
-    "currency": "CAD"
+    "currency": "CAD",
+    "market": "Canada"
   }
 ]
