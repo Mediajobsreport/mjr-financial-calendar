@@ -11,7 +11,7 @@
 <path d="M770 0h430v640h-170z" fill="#fff" opacity=".025"/>
 <path d="M1040 0h160v640h-25z" fill="#62A4DC" opacity=".075"/>
 <rect x="790" y="144" width="350" height="230" rx="24" fill="#ffffff"/>
-<text x="965" y="266" text-anchor="middle" font-family="Georgia,serif" font-size="48px" fill="#111">Paradium.AI</text>
+<text x="965" y="266" text-anchor="middle" font-family="Georgia,serif" font-size="48px" fill="#111">CORS</text>
 <text x="1160" y="530" text-anchor="end" class="label" font-size="150px" fill="#fff" opacity=".07">CORS</text>
 <rect x="66" y="54" width="310" height="44" rx="22" fill="#62A4DC"/>
 <text x="84" y="82" class="label" font-size="15px" letter-spacing=".5" fill="#0a1424">MJR FINANCIAL COVERAGE</text>
