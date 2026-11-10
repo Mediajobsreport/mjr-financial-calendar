@@ -349,5 +349,77 @@
     "website_url": "https://paradium.ai/",
     "investor_url": "https://investors.paradium.ai/",
     "quote_url": "https://www.tradingview.com/symbols/AMEX-PAAI/"
+  },
+  {
+    "name": "Stingray Group",
+    "ticker": "RAY",
+    "sector": "Music & Audio",
+    "description": "Canadian music, radio, streaming and advertising company.",
+    "website_url": "https://corporate.stingray.com/",
+    "investor_url": "https://corporate.stingray.com/investors-relations/",
+    "quote_url": "https://www.tradingview.com/symbols/TSX-RAY/",
+    "country": "Canada",
+    "exchange": "TSX",
+    "currency": "CAD"
+  },
+  {
+    "name": "BCE / Bell Media",
+    "ticker": "BCE",
+    "sector": "TV & Streaming",
+    "description": "Canadian communications company and parent of Bell Media, whose brands include CTV, radio stations and streaming services.",
+    "website_url": "https://www.bce.ca/",
+    "investor_url": "https://www.bce.ca/investors/overview",
+    "quote_url": "https://www.tradingview.com/symbols/TSX-BCE/",
+    "country": "Canada",
+    "exchange": "TSX",
+    "currency": "CAD"
+  },
+  {
+    "name": "Rogers Communications",
+    "ticker": "RCI.B",
+    "sector": "TV & Streaming",
+    "description": "Canadian communications, sports and entertainment company with television, radio and digital media operations.",
+    "website_url": "https://about.rogers.com/",
+    "investor_url": "https://about.rogers.com/investor-relations/",
+    "quote_url": "https://www.tradingview.com/symbols/TSX-RCI.B/",
+    "country": "Canada",
+    "exchange": "TSX",
+    "currency": "CAD"
+  },
+  {
+    "name": "Corus Entertainment",
+    "ticker": "CORS",
+    "sector": "Broadcast & Local",
+    "description": "Canadian media and content company with television, radio and entertainment production operations.",
+    "website_url": "https://www.corusent.com/",
+    "investor_url": "https://www.corusent.com/investor-relations/stock-information/",
+    "quote_url": "https://www.tradingview.com/symbols/TSX-CORS/",
+    "country": "Canada",
+    "exchange": "TSX",
+    "currency": "CAD"
+  },
+  {
+    "name": "Québecor",
+    "ticker": "QBR.B",
+    "sector": "News & Publishing",
+    "description": "Canadian telecommunications, media and entertainment company with television, news publishing and content production businesses.",
+    "website_url": "https://www.quebecor.com/en/home",
+    "investor_url": "https://www.quebecor.com/en/investors",
+    "quote_url": "https://www.tradingview.com/symbols/TSX-QBR.B/",
+    "country": "Canada",
+    "exchange": "TSX",
+    "currency": "CAD"
+  },
+  {
+    "name": "Cogeco Inc.",
+    "ticker": "CGO",
+    "sector": "Broadcast & Local",
+    "description": "Canadian holding company operating radio through Cogeco Media and telecommunications through Cogeco Communications.",
+    "website_url": "https://corpo.cogeco.com/cgo/en/",
+    "investor_url": "https://corpo.cogeco.com/cgo/en/investors/investor-relations/",
+    "quote_url": "https://www.tradingview.com/symbols/TSX-CGO/",
+    "country": "Canada",
+    "exchange": "TSX",
+    "currency": "CAD"
   }
 ]
