@@ -52,5 +52,32 @@
     "webcast_url": "https://investor.thewaltdisneycompany.com/events-and-presentations/event-details/2026/Disneys-Q4-FY26-Earnings-Results-Webcast-2026-r7J4pl6coY/default.aspx",
     "report_url": "https://investors.thewaltdisneycompany.com/financials/quarterly-results/default.aspx",
     "verified_at": "2026-11-05"
+  },
+  {
+    "company": "WildBrain",
+    "title": "Fiscal 2027 First Quarter Financial Results Conference Call",
+    "date": "2026-11-12",
+    "time": "10:00 AM",
+    "timezone": "ET",
+    "event_type": "Earnings call",
+    "fiscal_period": "Q1 FY2027",
+    "status": "confirmed",
+    "source_url": "https://www.tmxnewsfile.com/company/11680/WildBrain-Ltd.",
+    "webcast_url": "https://www.gowebcasting.com/15205",
+    "report_url": "https://investors.wildbrain.com/financials/quarterly-results/default.aspx",
+    "verified_at": "2026-11-10"
+  },
+  {
+    "company": "Blue Ant Media",
+    "title": "Fourth Quarter and Full Year 2026 Financial Results Conference Call",
+    "date": "2026-11-25",
+    "time": "11:00 AM",
+    "timezone": "ET",
+    "event_type": "Earnings call",
+    "fiscal_period": "Q4 and FY2026",
+    "status": "confirmed",
+    "source_url": "https://www.blueantmedia.com/2026/11/blue-ant-media-to-report-fourth-quarter-and-full-year-2026-results-and-host-conference-call-on-november-25-2026/",
+    "webcast_url": "https://app.webinar.net/AlQyr3wrRba",
+    "verified_at": "2026-11-10"
   }
 ]

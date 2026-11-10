@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-11-10T16:04:47.823Z",
+  "updated_utc": "2026-11-10T16:11:47.942Z",
   "companies": [
     {
       "name": "AMC Networks",
@@ -33,6 +33,32 @@
       "investor_url": "https://bbgi.com/investors/",
       "quote_url": "https://www.tradingview.com/symbols/NASDAQ-BBGI/",
       "market": "United States"
+    },
+    {
+      "name": "Blue Ant Media",
+      "ticker": "BAMI",
+      "exchange": "TSX",
+      "country": "Canada",
+      "market": "Canada",
+      "currency": "CAD",
+      "sector": "TV & Streaming",
+      "description": "Canadian streaming, television, content production, distribution and rights-management company.",
+      "website_url": "https://blueantmedia.com/",
+      "investor_url": "https://blueantmedia.com/investor-relations/",
+      "quote_url": "https://www.tradingview.com/symbols/TSX-BAMI/"
+    },
+    {
+      "name": "Charter Communications",
+      "ticker": "CHTR",
+      "exchange": "NASDAQ",
+      "country": "United States",
+      "market": "United States",
+      "currency": "USD",
+      "sector": "TV & Streaming",
+      "description": "Spectrum provider of television, broadband, local news, sports programming and advertising services.",
+      "website_url": "https://www.spectrum.com/",
+      "investor_url": "https://ir.spectrum.com/",
+      "quote_url": "https://www.tradingview.com/symbols/NASDAQ-CHTR/"
     },
     {
       "name": "Cogeco Inc.",
@@ -171,6 +197,19 @@
       "market": "United States"
     },
     {
+      "name": "Liberty Media",
+      "ticker": "FWONK",
+      "exchange": "NASDAQ",
+      "country": "United States",
+      "market": "United States",
+      "currency": "USD",
+      "sector": "TV & Streaming",
+      "description": "Sports and entertainment company with Formula One and related media rights operations.",
+      "website_url": "https://www.libertymedia.com/",
+      "investor_url": "https://www.libertymedia.com/investors",
+      "quote_url": "https://www.tradingview.com/symbols/NASDAQ-FWONK/"
+    },
+    {
       "name": "Lionsgate Studios",
       "ticker": "LION",
       "sector": "TV & Streaming",
@@ -179,6 +218,19 @@
       "investor_url": "https://investors.lionsgate.com/",
       "quote_url": "https://www.tradingview.com/symbols/NYSE-LION/",
       "market": "United States"
+    },
+    {
+      "name": "Live Nation Entertainment",
+      "ticker": "LYV",
+      "exchange": "NYSE",
+      "country": "United States",
+      "market": "United States",
+      "currency": "USD",
+      "sector": "Music & Audio",
+      "description": "Live entertainment company encompassing concerts, Ticketmaster, sponsorships and music-related advertising.",
+      "website_url": "https://www.livenationentertainment.com/",
+      "investor_url": "https://investors.livenationentertainment.com/",
+      "quote_url": "https://www.tradingview.com/symbols/NYSE-LYV/"
     },
     {
       "name": "MediaCo",
@@ -241,6 +293,19 @@
       "market": "United States"
     },
     {
+      "name": "Omnicom",
+      "ticker": "OMC",
+      "exchange": "NYSE",
+      "country": "United States",
+      "market": "United States",
+      "currency": "USD",
+      "sector": "Advertising & Marketing",
+      "description": "Global advertising, media buying, marketing and public relations company.",
+      "website_url": "https://www.omc.com/",
+      "investor_url": "https://investor.omc.com/overview/default.aspx",
+      "quote_url": "https://www.tradingview.com/symbols/NYSE-OMC/"
+    },
+    {
       "name": "Paradium.AI",
       "ticker": "PAAI",
       "sector": "News & Publishing",
@@ -269,6 +334,19 @@
       "investor_url": "https://ir.people-incorporated.com/",
       "quote_url": "https://www.tradingview.com/symbols/NASDAQ-PPLI/",
       "market": "United States"
+    },
+    {
+      "name": "Postmedia",
+      "ticker": "PNC.A",
+      "exchange": "TSX",
+      "country": "Canada",
+      "market": "Canada",
+      "currency": "CAD",
+      "sector": "News & Publishing",
+      "description": "Canadian newspaper and digital news publisher operating local, regional and national media brands.",
+      "website_url": "https://www.postmedia.com/",
+      "investor_url": "",
+      "quote_url": "https://www.tradingview.com/symbols/TSX-PNC.A/"
     },
     {
       "name": "Québecor",
@@ -410,6 +488,32 @@
       "market": "United States"
     },
     {
+      "name": "Thomson Reuters",
+      "ticker": "TRI",
+      "exchange": "TSX",
+      "country": "Canada",
+      "market": "Canada",
+      "currency": "CAD",
+      "sector": "News & Publishing",
+      "description": "Canadian information and technology company and parent of Reuters, a global news organization.",
+      "website_url": "https://www.thomsonreuters.com/",
+      "investor_url": "https://investors.thomsonreuters.com/",
+      "quote_url": "https://www.tradingview.com/symbols/TSX-TRI/"
+    },
+    {
+      "name": "TKO Group",
+      "ticker": "TKO",
+      "exchange": "NYSE",
+      "country": "United States",
+      "market": "United States",
+      "currency": "USD",
+      "sector": "TV & Streaming",
+      "description": "Sports and entertainment company whose businesses include UFC, WWE and sports marketing and media rights services.",
+      "website_url": "https://www.tkogrp.com/",
+      "investor_url": "https://investor.tkogrp.com/overview/default.aspx",
+      "quote_url": "https://www.tradingview.com/symbols/NYSE-TKO/"
+    },
+    {
       "name": "Townsquare Media",
       "ticker": "TSQ",
       "sector": "Broadcast & Local",
@@ -418,6 +522,19 @@
       "investor_url": "https://www.townsquaremedia.com/equity-investors",
       "quote_url": "https://www.tradingview.com/symbols/NYSE-TSQ/",
       "market": "United States"
+    },
+    {
+      "name": "The Trade Desk",
+      "ticker": "TTD",
+      "exchange": "NASDAQ",
+      "country": "United States",
+      "market": "United States",
+      "currency": "USD",
+      "sector": "Advertising & Marketing",
+      "description": "Advertising technology company operating a platform for programmatic media buying across digital channels.",
+      "website_url": "https://www.thetradedesk.com/",
+      "investor_url": "https://investors.thetradedesk.com/overview/default.aspx",
+      "quote_url": "https://www.tradingview.com/symbols/NASDAQ-TTD/"
     },
     {
       "name": "Urban One",
@@ -438,6 +555,19 @@
       "investor_url": "https://investors.usatodayco.com/",
       "quote_url": "https://www.tradingview.com/symbols/NYSE-TDAY/",
       "market": "United States"
+    },
+    {
+      "name": "Versant",
+      "ticker": "VSNT",
+      "exchange": "NASDAQ",
+      "country": "United States",
+      "market": "United States",
+      "currency": "USD",
+      "sector": "TV & Streaming",
+      "description": "Television and digital media company whose brands include CNBC, MS NOW, USA Network and Golf Channel.",
+      "website_url": "https://www.versantmedia.com/",
+      "investor_url": "https://investors.versantmedia.com/",
+      "quote_url": "https://www.tradingview.com/symbols/NASDAQ-VSNT/"
     },
     {
       "name": "The Walt Disney Company",
@@ -468,9 +598,36 @@
       "investor_url": "https://investors.wmg.com/",
       "quote_url": "https://www.tradingview.com/symbols/NASDAQ-WMG/",
       "market": "United States"
+    },
+    {
+      "name": "WildBrain",
+      "ticker": "WILD",
+      "exchange": "TSX",
+      "country": "Canada",
+      "market": "Canada",
+      "currency": "CAD",
+      "sector": "TV & Streaming",
+      "description": "Canadian family entertainment company specializing in content production, digital distribution and brand licensing.",
+      "website_url": "https://www.wildbrain.com/",
+      "investor_url": "https://investors.wildbrain.com/overview/default.aspx",
+      "quote_url": "https://www.tradingview.com/symbols/TSX-WILD/"
     }
   ],
   "events": [
+    {
+      "company": "WildBrain",
+      "title": "Fiscal 2027 First Quarter Financial Results Conference Call",
+      "date": "2026-11-12",
+      "time": "10:00 AM",
+      "timezone": "ET",
+      "event_type": "Earnings call",
+      "fiscal_period": "Q1 FY2027",
+      "status": "confirmed",
+      "source_url": "https://www.tmxnewsfile.com/company/11680/WildBrain-Ltd.",
+      "webcast_url": "https://www.gowebcasting.com/15205",
+      "report_url": "https://investors.wildbrain.com/financials/quarterly-results/default.aspx",
+      "verified_at": "2026-11-10"
+    },
     {
       "company": "The Walt Disney Company",
       "title": "Fiscal Full Year and Fourth Quarter 2026 Earnings Webcast",
@@ -484,6 +641,19 @@
       "webcast_url": "https://investor.thewaltdisneycompany.com/events-and-presentations/event-details/2026/Disneys-Q4-FY26-Earnings-Results-Webcast-2026-r7J4pl6coY/default.aspx",
       "report_url": "https://investors.thewaltdisneycompany.com/financials/quarterly-results/default.aspx",
       "verified_at": "2026-11-05"
+    },
+    {
+      "company": "Blue Ant Media",
+      "title": "Fourth Quarter and Full Year 2026 Financial Results Conference Call",
+      "date": "2026-11-25",
+      "time": "11:00 AM",
+      "timezone": "ET",
+      "event_type": "Earnings call",
+      "fiscal_period": "Q4 and FY2026",
+      "status": "confirmed",
+      "source_url": "https://www.blueantmedia.com/2026/11/blue-ant-media-to-report-fourth-quarter-and-full-year-2026-results-and-host-conference-call-on-november-25-2026/",
+      "webcast_url": "https://app.webinar.net/AlQyr3wrRba",
+      "verified_at": "2026-11-10"
     }
   ]
 }
