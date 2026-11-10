@@ -73,6 +73,10 @@ LOGO_URLS = {
     "WMG": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Warner_Music_Group_logo_%282021%29.svg/3840px-Warner_Music_Group_logo_%282021%29.svg.png",
 }
 
+# Preserve the Paramount logo after its stock symbol change.
+LOGO_URLS["SKYD"] = LOGO_URLS["PSKY"]
+ACCENTS["SKYD"] = ACCENTS["PSKY"]
+
 SECTOR_LABELS = {
     "Broadcast & Local": "BROADCAST & LOCAL MEDIA",
     "News & Publishing": "NEWS & PUBLISHING",
@@ -193,7 +197,7 @@ def render(company: dict) -> Path:
 <path d="M770 0h430v640h-170z" fill="#fff" opacity=".025"/>
 <path d="M1040 0h160v640h-25z" fill="{accent}" opacity=".075"/>
 <rect x="790" y="144" width="350" height="230" rx="24" fill="#ffffff"/>
-{(f'<image href="{esc(logo_data_uri(ticker) or '')}" x="812" y="157" width="306" height="204" preserveAspectRatio="xMidYMid meet"/>' if ticker in LOGO_URLS else f'<text x="965" y="266" text-anchor="middle" font-family="Georgia,serif" font-size="48px" fill="#111">Paradium.AI</text>')}
+{(f'<image href="{esc(logo_data_uri(ticker) or '')}" x="812" y="157" width="306" height="204" preserveAspectRatio="xMidYMid meet"/>' if ticker in LOGO_URLS else f'<text x="965" y="266" text-anchor="middle" font-family="Georgia,serif" font-size="48px" fill="#111">{esc(ticker)}</text>')}
 <text x="1160" y="530" text-anchor="end" class="label" font-size="150px" fill="#fff" opacity=".07">{esc(ticker)}</text>
 <rect x="66" y="54" width="310" height="44" rx="22" fill="{accent}"/>
 <text x="84" y="82" class="label" font-size="15px" letter-spacing=".5" fill="#0a1424">MJR FINANCIAL COVERAGE</text>
