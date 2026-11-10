@@ -192,12 +192,12 @@
     },
     {
       "name": "Paramount Skydance",
-      "ticker": "PSKY",
+      "ticker": "SKYD",
       "sector": "TV & Streaming",
       "description": "Global entertainment company combining film and television studios, broadcast networks, and streaming services.",
       "website_url": "https://www.paramount.com/",
       "investor_url": "https://ir.paramount.com/",
-      "quote_url": "https://www.tradingview.com/symbols/NASDAQ-PSKY/"
+      "quote_url": "https://www.tradingview.com/symbols/NYSE-SKYD/"
     },
     {
       "name": "People Inc.",
