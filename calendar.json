@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-11-10T16:11:47.942Z",
+  "updated_utc": "2026-11-13T06:44:52+00:00",
   "companies": [
     {
       "name": "AMC Networks",
@@ -614,20 +614,6 @@
     }
   ],
   "events": [
-    {
-      "company": "WildBrain",
-      "title": "Fiscal 2027 First Quarter Financial Results Conference Call",
-      "date": "2026-11-12",
-      "time": "10:00 AM",
-      "timezone": "ET",
-      "event_type": "Earnings call",
-      "fiscal_period": "Q1 FY2027",
-      "status": "confirmed",
-      "source_url": "https://www.tmxnewsfile.com/company/11680/WildBrain-Ltd.",
-      "webcast_url": "https://www.gowebcasting.com/15205",
-      "report_url": "https://investors.wildbrain.com/financials/quarterly-results/default.aspx",
-      "verified_at": "2026-11-10"
-    },
     {
       "company": "The Walt Disney Company",
       "title": "Fiscal Full Year and Fourth Quarter 2026 Earnings Webcast",
