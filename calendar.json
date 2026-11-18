@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-11-13T06:44:52+00:00",
+  "updated_utc": "2026-11-18T07:28:50+00:00",
   "companies": [
     {
       "name": "AMC Networks",
@@ -614,20 +614,6 @@
     }
   ],
   "events": [
-    {
-      "company": "The Walt Disney Company",
-      "title": "Fiscal Full Year and Fourth Quarter 2026 Earnings Webcast",
-      "date": "2026-11-17",
-      "time": "8:30 AM",
-      "timezone": "ET",
-      "event_type": "Earnings webcast",
-      "fiscal_period": "Q4 and FY 2026",
-      "status": "confirmed",
-      "source_url": "https://investors.thewaltdisneycompany.com/news/news-details/2026/The-Walt-Disney-Company-Executives-to-Discuss-Fiscal-Full-Year-and-Fourth-Quarter-2026-Financial-Results-via-Webcast/default.aspx",
-      "webcast_url": "https://investor.thewaltdisneycompany.com/events-and-presentations/event-details/2026/Disneys-Q4-FY26-Earnings-Results-Webcast-2026-r7J4pl6coY/default.aspx",
-      "report_url": "https://investors.thewaltdisneycompany.com/financials/quarterly-results/default.aspx",
-      "verified_at": "2026-11-05"
-    },
     {
       "company": "Blue Ant Media",
       "title": "Fourth Quarter and Full Year 2026 Financial Results Conference Call",
