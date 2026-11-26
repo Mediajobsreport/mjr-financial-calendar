@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-11-18T07:28:50+00:00",
+  "updated_utc": "2026-11-26T08:16:57+00:00",
   "companies": [
     {
       "name": "AMC Networks",
@@ -613,19 +613,5 @@
       "quote_url": "https://www.tradingview.com/symbols/TSX-WILD/"
     }
   ],
-  "events": [
-    {
-      "company": "Blue Ant Media",
-      "title": "Fourth Quarter and Full Year 2026 Financial Results Conference Call",
-      "date": "2026-11-25",
-      "time": "11:00 AM",
-      "timezone": "ET",
-      "event_type": "Earnings call",
-      "fiscal_period": "Q4 and FY2026",
-      "status": "confirmed",
-      "source_url": "https://www.blueantmedia.com/2026/11/blue-ant-media-to-report-fourth-quarter-and-full-year-2026-results-and-host-conference-call-on-november-25-2026/",
-      "webcast_url": "https://app.webinar.net/AlQyr3wrRba",
-      "verified_at": "2026-11-10"
-    }
-  ]
+  "events": []
 }
